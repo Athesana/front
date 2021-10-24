@@ -7,9 +7,10 @@
     스크립트, 스타일 시트의 링크 또는 선언을 포함하는 영역
 -->
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- meta : 현재 HTML 문서들이 가지고 있는 정보들을 담아준다. 시작은 있고 끝 없어서 그냥 한 줄로 작성 -->
+    <meta charset="UTF-8"> <!-- 인코딩에 대한 설정 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- 최신형태의 표준으로 출력해주는 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 모바일 기기에 맞게 표시되게 만들어주는 설정 -->
     <meta name="generator" content="VScode"> <!-- 페이지를 생성한 프로그램 -->
     <meta name="author" content="sana"> <!-- 페이지의 저자 -->
     <meta name="description" content="이 페이지는 글자 관련된 태그들을 공부하는 페이지입니다."> <!-- 페이지 설명 -->
@@ -36,7 +37,7 @@
 <!-- 줄 바꾸면서 수평선을 넣는 태그 -->
 <hr>
 
-<!-- 단락을 구분하는 태그 -->
+<!-- 단락을 구분하는 태그  : 줄바꿈을 하지 않아도 자동으로 된다. -->
 <h3>단락을 구분하는 태그</h3>
 <p>첫 번째 단락입니다.</p>
 <p>두 번째 단락입니다.</p>
@@ -52,7 +53,7 @@
 
 <pre>
     pre 태그는 여러 칸 띄우기         혹은 줄바꿈 등을 포함하여
-    입력한 내용 그대로 표현하는 태그이다.
+입력한 내용 그대로 표현하는 태그이다.
 </pre>
 
 <hr>
@@ -73,10 +74,12 @@
 <br>
 
 <!-- 인용구문을 나타내는 태그 -->
+<!-- blockquote와 q는 실제 웹 화면에서 링크를 보여주지는 않고 검색엔진(브라우저)에서 활용한다. -->
 <blockquote cite= "http://www.naver.com"> 인용구문을 나타내는 태그</blockquote>
 <q cite="http://www.naver.com">인용문구를 나타내는 태그</q>
 <p>참고 사이트 : <cite>http://www.naver.com</cite></p>
 
+<mark>mark는 css style 적용 안하면 색을 변경할 수는 없다.</mark><br>
 <mark style = "background-color: aqua;">형광팬 효과를 나타내는 태그</mark>
 <br>
 
@@ -92,6 +95,7 @@
 기본 글자에 <sub>아래 첨자</sub>를 나타내는 태그와 <sup>위 첨자</sup>를 나타내는 태그이다.
 <br>
 
+<!-- 마우스를 가져다 대면 툴팁으로 약어에 대한 전체 글자, 부연 설명을 제공하는 태그 -->
 <addr title="Internet of Things">IoT</addr>란 각종 사물에 센서와 통신 기능을 내장해 인터넷에 연결한 기술이다.
 <br>
 
@@ -131,9 +135,3 @@
 <br><br><br><br><br><br>
 </body>
 </html> <!-- html 문서의 끝을 표시 해주는 태그 -->
-<!-- ctrl + / 주석 잡기 , 
-    ctrl+atl 같이 누르고 방향키 누르면 여러 줄 한꺼번에 잡기, 
-    alt + 방향키 위아래 줄 바꾸기, 
-    alt+shift+화살표 : 한줄 복사
-
--->
