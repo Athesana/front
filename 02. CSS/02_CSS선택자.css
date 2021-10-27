@@ -1,0 +1,253 @@
+/* * {
+    color: green;
+} */
+
+/* 기본 속성 선택자 테스트 */
+/* div 중 name 속성값이 name1과 일치하는 태그를 찾아보자 */
+/* name의 값이 완전히 똑같은(갯수도) 것만 스타일이 적용된다. */
+/* div[] 사이에 공백 없이 작성할 것, "값"에 큰 따옴표 없어도 작동된다. */
+div[name="name1"] {
+    background-color: orangered;
+}
+
+div[name="name3 name1"]{
+    background-color: skyblue;
+} 
+
+/* div 중 name 속성 안에 name1이 포함되어 있는 태그(속성 값이 띄어쓰기로 구분된 것들만 찾아보자) */
+div[name~="name1"] {
+    background-color: yellow;
+}
+
+/* div 중 class 속성에서 class로 시작되는 태그 (-로 구분) */
+div[class|="class"] {
+    background-color: aqua;
+}
+
+/* div 태그 중에 name 속성이 name으로 시작되는 태그 */
+div[name^="name"]{
+    background-color: blue;
+} 
+
+/* div 중 class 속성이 class로 끝나는 경우 */
+div[class$=class]{
+    color: white;
+}
+
+/* div 중  class 속성에 i를 포함하는 태그*/
+div[class*=i]{
+    background-color: yellowgreen;
+    color: red;
+}
+
+/* class가 div-class인 것을 찾고 그 중에 name 속성 값에 name3이 포함되어 있는 경우(속성값이 띄어쓰기로 구분) */
+.div-class[name~="name3"]{
+    background-color: hotpink;
+}
+
+/* [name*=name3] 으로 해도 되지만 띄어쓰기가 되어있지 않아도 스타일 적용이 된다. 띄어쓰기로 값이 구분 되어 있는지 확인하려면 ~= 을 사용할 것 */
+
+
+/* -------------------------------------------------- */
+
+/* 자손 선택자와 후손 선택자 테스트 */
+#test1>h4{
+    background-color: orange;
+}
+
+#test1>ul>li {
+    background-color: coral;
+}
+
+#test1 li {
+    color: red;
+}
+
+/* -------------------------------------------------- */
+
+/* 동위 선택자 테스트 */
+#div-test {
+    background-color: red;
+}
+
+#div-test+div{
+    background-color: seagreen;
+}
+
+/* 바로 뒤에 div가 있어야 가능
+근데 바로 뒤에 p 태그가 있으면 동작하지 않는다.
+div-test 바로 뒤에 div가 있으면 백그라운드 컬러가 변경이 되는데
+p가 있으면 동작은 안한다. */
+/* 
+#div-test~div{
+    background-color: seagreen;
+} */
+
+/* 바로 뒤에 div가 오지 않아도 하위에 모든 div 요소에 스타일 적용 가능 */
+
+
+/* -------------------------------------------------- */
+
+/* 반응 선택자 테스트 */
+
+#active-test, #hover-test{
+    background-color: springgreen;
+    width:300px;
+    height:300px;
+}
+
+#active-test:active{
+    background-color: yellow;
+    color:blue;
+}
+
+#hover-test:hover{
+    background-color: steelblue;
+    color:white;
+    cursor:pointer;
+}
+
+/* 여러가지 한꺼번에 적용도 가능하다. */
+/* #hover-test:active{
+    background-color: hotpink;
+    color:blue;
+} */
+
+
+/* -------------------------------------------------- */
+
+/* 상태 선택자 테스트 */
+
+input[type=checkbox]:checked{
+    width: 20px;
+    height: 20px;
+}
+
+/* 선택된 checkbox 바로 뒤에 붙어있는 label 요소 하나의 폰트를 기운다. */
+input[type=checkbox]:checked+label{
+    font-size: 20px;
+}
+
+/* 초점 테스트 */
+#userId:focus, #userPwd:focus {
+    background-color: lightgoldenrodyellow;
+    border:2px solid red;
+}
+
+
+option:disabled{
+    background-color: violet;
+    color: white;
+}
+
+option:enabled{
+    background-color: turquoise;
+    color: white;
+}
+
+button:disabled{
+    color:red;
+}
+
+button:enabled{
+    background-color: indianred;
+}
+
+/* -------------------------------------------------- */
+
+/* 일반 구조 선택자 */
+/* 형제 관계 태그 중 첫 번째 태그 선택  */
+#test1 p:first-child{
+    background-color: red;
+    color:white;
+}
+
+/* 형제 관계 태그 중 마지막 태그 선택  */
+/* 마지막 자식이 p 태그가 아니기 때문에 스타일 적용되지 않는다. */
+#test1 p:last-child{
+    background-color: red;
+    color: white;
+}
+
+/* 형제 관계 태그 중 앞에서 수열번 째 태그 선택 */
+/* (2n, 2n+1 같은 수식을 쓰거나 even:짝수 odd:홀수를 써도 된다.) */
+#test1 p:nth-child(even){
+    background-color: yellowgreen;
+    color: white;
+}
+
+/* 형제 관계 태그 중 뒤에서 수열번째 태그 선택 */
+/* 마지막 자식으로부터 4번째에 위치한 아이(밑에서부터) */
+#test1 p:nth-last-child(4){
+    background-color: skyblue;
+    color:white;
+}
+
+
+/* -------------------------------------------------- */
+/* 형태 구조 선택자 */
+/* 형제 관계 태그 중 첫 번째 태그 선택 */
+/* 요소의 타입만 체크한다. 타입만 가지고 순번이 무엇인지 판단한다.
+하위 요소들 중에 <p>태그들만 가지고 카운트를 하기 때문에 스타일 적용이 가능하다. */
+#test2 p:first-of-type {
+    background-color: red;
+    color: white;
+}
+
+#test2 p:last-of-type{
+    background-color: orange;
+    color: white;
+}
+
+/* 형제관계 태그 중에서 앞에서부터 수열번째 태그를 선택한다 */
+#test2 p:nth-of-type(even){
+    background-color: yellowgreen;
+    color: white;
+}
+
+/* 형제 관계 태그 중 뒤에서 수열번째 태그 선택 */
+/* 위치로 구분하는 child와 다르게 타입만 보고 계산하기 때문에 타입 중에서 역순으로 4번째에 있는 것이 선택된다. */
+#test2 p:nth-last-of-type(4){
+    background-color: skyblue;
+    color: white;
+}
+
+/* -------------------------------------------------- */
+/* 문자 선택자 테스트 */
+/* 첫 번째 글자 선택해서 스타일 적용 */
+#test3 p::first-letter{
+    font-size: 3em;
+}
+
+/* 첫 번째 라인을 선택해서 스타일 적용 */
+#test3 p::first-line{
+    background-color: wheat;
+}
+
+/* 태그 앞에 위치하는 공간을 선택 */
+#test3 p::before{
+    content: "1. ";
+}
+
+/* 태그 뒤에 위치하는 공간을 선택 */
+/* <p> 태그 바깥에 위치하기 때문에 드래그 안 잡힌다. */
+#test3 p::after{
+    content: "@@@@@@@@@@@@@@@@@@@@@";
+}
+
+/* 사용자가 드래그한 글자 스타일 바꾸기 */
+#test3 p::selection{
+    background-color: papayawhip;
+    color: seagreen;
+}
+
+/* -------------------------------------------------- */
+/* 부정 선택자 */
+/* p 태그들 중에서 클래스가 p1이 아닌 애들만 바꾼다. */
+/* #test4 p:not(.p1){
+    background-color: coral;
+} */
+
+#test4 p:not(:nth-child(odd)){
+    background-color: coral;
+}

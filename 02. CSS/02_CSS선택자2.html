@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본 선택자 2</title>
+    <!-- 
+        욉수 스타일 시트
+        스타일만을 따로 관리하는 .css 확장자를 가지는 외부 문서를 만들고 <link> 태그를 이용해서 연결시켜주는 방법
+        href = " " 사이에 파일 경로나 외부 웹링크를 작성하면 된다.
+    -->
+
+    <link rel="stylesheet" href="./02_CSS선택자.css">
+</head>
+<body>
+    <h1>CSS 기본 선택자 2</h1>
+    
+    <h3>기본 속성 선택자</h3>
+    <p>
+        기본 선택자 뒤에 [] 대괄호를 사용해서 속성과 속성 값을 사용한다.
+    </p>
+    <pre>
+        선택자[속성=속성값] {
+            스타일 속성: 값;
+            스타일 속성: 값;
+            ...
+        }
+    </pre>
+    <!-- div.div-class*3+div.class-div -->
+    <!-- div.div-class*3{div$}+div.class-div{div4} -->
+
+
+    <div class="div-class" name="name1">div1</div>
+    <div class="div-class" name="name2">div2</div>
+    <div class="div-class" name="name3 name1">div3</div>
+    <div class="class-div" name="name3">div4</div>
+
+    <h3>2. 자손 선택자와 후손 선택자</h3>
+    <p>
+        자손 : 바로 하위 요소들 / 후손 : 하위에 있는 요소 모두들 의미
+    </p>
+    <pre>
+        1) 자손 선택자
+            a>b{
+                a 바로 하위 에 있는 요소들 중에 b에 해당하는 선택자를 뽑아서 스타일을 적용한다.
+                스타일 속성: 값;
+                스타일 속성: 값;
+                ...
+            }
+        2) 후손 선택자
+            a b {
+                a 하위에 있는 요소들 중에 b에 해당하는 선택자를 뽑아서 스타일을 적용한다.
+                스타일 속성: 값;
+                스타일 속성: 값;
+                ...
+            }
+    </pre>
+
+    <!-- div>h4{자손입니다.}+h4{나도 자손입니다.}+ul>h4+li*2 -->
+    <div id="test1">
+        <h4>자손입니다.</h4>
+        <h4>나도 자손입니다.</h4>
+        <ul>
+            <h4>나도 자손입니다.</h4>
+            <li>나는 ul의 자손이면서 div의 후손입니다.</li>
+            <li>나는 ul의 자손이면서 div의 후손입니다.</li>
+        </ul>
+        <li>나는 div의 자손입니다.</li>
+    </div>
+
+    <h3>3. 동위 선택자</h3>
+    <p>
+        동위 관계(같은 레벨)에서 뒤에 위치한 태그를 선택할 때 사용한다.
+    </p>
+    <pre>
+        1) a 선택자 뒤에 있는 b 요소 한 개 선택
+            a+b {
+                스타일 속성: 값;
+                스타일 속성: 값;
+                ...
+            }
+
+        2) a 선택자 뒤에 있는 모든 b 요소 선택
+            a~b {
+                스타일 속성: 값;
+                스타일 속성: 값;
+                ...
+            }
+    </pre>
+
+    <!-- div*5{div$} -->
+    <div id="div-test">div1</div>
+    <!-- <p>aa</p> -->
+    <div>div2</div>
+    <div>div3</div>
+    <div>div4</div>
+    <div>div5</div>
+
+    <h3>4. 반응 선택자</h3>
+    <p>
+        사용자의 움직임에 따라 달라지는 선택자
+    </p>
+
+    <pre>
+        1) 사용자가 클릭하는 요소에 스타일 적용
+            선택자:active(=가상의클래스){
+                스타일 속성: 값;
+                스타일 속성: 값;
+                ...
+            }
+        
+        2) 사용자가 마우스를 올려놓는 요소에 스타일 적용
+            선택자:hover {
+                스타일 속성: 값;
+                스타일 속성: 값;
+                ...
+            }
+    </pre>
+
+    <!-- div#active-test{active 테스트}+br+div#hover-test{hover 테스트} -->
+    <div id="active-test">active 테스트</div>
+    <br>
+    <div id="hover-test">hover 테스트</div>
+
+
+    <h3>5. 상태 선택자</h3>
+    <p>
+        요소의 상태에 따라 선택되는 선택자이다.
+    </p>
+    <pre>
+        1) 체크된 상태 태그의 스타일 변경(라디오, 체크박스)
+            선택자:checked {
+                스타일 속성: 값;
+                스타일 속성: 값;
+                ...
+            }
+    </pre>
+
+    <!-- (label>input:checkbox)*3 -->
+    <input type="checkbox" name="fruits" id="apple"><label for="apple">사과</label>
+    <input type="checkbox" name="fruits" id="banana"><label for="banana">바나나</label>
+    <input type="checkbox" name="fruits" id="peach"><label for="peach">복숭아</label>
+
+    <br><br>
+    
+    <pre>
+        2) 초점이 맞추어진 input 태그의 스타일 변경(input 태그의 포커스가 맞추어졌다.)
+            선택자:focus {
+                스타일 속성: 값;
+                스타일 속성: 값;
+                ...
+            }
+    </pre>
+
+    <label for="userId">아이디 : </label>
+    <input type="text" name="userId" id="userId" placeholder="아이디를 입력하세요.">
+    
+    <br><br>
+
+    <label for="userPwd">패스워드 : </label>
+    <input type="text" name="userPwd" id="userPwd" placeholder="패스워드를 입력하세요.">
+
+    <br><br>
+
+    <pre>
+        3) 사용 가능한 요소의 스타일 변경
+            선택자:enabled{
+                스타일 속성: 값;
+                스타일 속성: 값;
+                ...
+            }
+
+        4) 사용 불가능한 요소의 스타일 변경
+            선택자:disabled{
+                스타일 속성: 값;
+                스타일 속성: 값;
+                ...
+            }
+    </pre>
+
+    <h3>당신의 연령대는?</h3>
+    <select>
+        <option disabled>10대</option>
+        <option disabled>20대</option>
+        <option>30대</option>
+        <option>40대</option>
+        <option>50대</option>
+    </select>
+
+    <button>버튼1</button>
+    <button disabled>버튼2</button>
+
+
+    <h3>6. 일반 구조 선택자</h3>
+    <p>
+        특정 위치에 있는 태그 선택(위치로 구분)
+    </p>
+
+
+    <!-- div#test1>p*5{테스트 $}+pre{테스트 6} -->
+    <div id="test1">
+        <!-- <pre>테스트 0</pre> -->
+        <p>테스트 1</p>
+        <p>테스트 2</p>
+        <p>테스트 3</p>
+        <p>테스트 4</p>
+        <p>테스트 5</p>
+        <pre>테스트 6</pre>
+    </div>
+
+    <h3>7. 형태 구조 선택자</h3>
+    <p>
+        특정 위치에 있는 태그 선택(태그별로 구분)
+    </p>
+
+    <div id="test2">
+        <p>테스트 1</p>
+        <p>테스트 2</p>
+        <p>테스트 3</p>
+        <p>테스트 4</p>
+        <p>테스트 5</p>
+        <pre>테스트 6</pre>
+    </div>
+
+    <h3>8. 문자 선택자</h3>
+    <p>
+        태그 내부에서 특정 조건의 문자를 선택하는 선택자
+    </p>
+
+    <div id="test3">
+        <p>
+        25일 점심시간을 앞두고 전국 일대에서 케이티(KT) 인터넷망이 마비돼 시민들이 불편을 겪고 있다.
+        이날 오전 11시를 전후해 케이티의 유·무선 서비스에 장애가 발생했다. 케이티는 “대규모 디도스 공격으로 네트워크 장애가 발생했다”고 밝혔으며 정확한 피해규모는 파악되지 않았다.
+
+        점심시간을 앞두고 일어난 통신 장애로 전국 상점과 시민들이 큰 불편을 겪었다. 서울 여의도의 한 식당가에서는 “포스기를 이용한 주문과 결제가 안 된다”며 손님들을 돌려보내기도 했고, “계좌이체와 현금결제밖에 안 된다”며 손님에게 양해를 구하는 식당도 보였다. 큐아르(QR)코드 체크인도 되지 않아 수기로 명부를 작성하는 모습도 보였다. 배달 애플리케이션이 작동되지 않아 배달 주문을 받지 못하는 상인들도 있었다.
+        병원에서도 혼란이 빚어졌다. 대구의 한 한의원에서 근무하는 장아무개(33)씨는 “카드리더기와 전화, 인터넷 등이 먹통이 돼 어르신인 환자들이 카드 결제가 왜 안 되냐며 항의해오는 등 혼란을 겪고 있다”며 “일단은 진료비를 모두 미수금으로 잡아둔 상태”라고 말했다.
+        트위터 등 에스엔에스(SNS)에서는 “원격으로 학교 수업을 듣다가 갑자기 끊겼다”, “버스터미널 무인 발권기가 작동하지 않아 대면 매표소로 사람들이 몰렸다” 등의 불편을 호소하는 글이 올라왔다.
+        케이티는 “오전 11시께 케이티 네트워크에 대규모 디도스 공격이 발생한 것으로 파악된다”며 “케이티 위기관리위원회를 즉시 가동해 신속한 조치 중이다. 빠른 복구를 위해 최선을 다할 것”이라고 밝혔다.
+        </p>
+    </div>
+    
+    <h3>9. 부정 선택자</h3>
+    <p>
+        지금까지 선택자에 대해 반대로 적용되는 선택자
+    </p>
+
+    <!-- div>p*5{테스트 $} -->
+    <div id="test4">
+        <p>테스트 1</p>
+        <p>테스트 2</p>
+        <p>테스트 3</p>
+        <p>테스트 4</p>
+        <p>테스트 5</p>
+    </div>
+
+
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+</body>
+</html>
