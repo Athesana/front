@@ -1,46 +1,51 @@
+/* !!!!!여기는 외부 스타일 시트입니다!!!!! */
+
 /* * {
     color: green;
 } */
 
 /* 기본 속성 선택자 테스트 */
-/* div 중 name 속성값이 name1과 일치하는 태그를 찾아보자 */
+/* div 중 name 속성의 값이 name1과 일치하는 태그를 찾아보자 */
 /* name의 값이 완전히 똑같은(갯수도) 것만 스타일이 적용된다. */
 /* div[] 사이에 공백 없이 작성할 것, "값"에 큰 따옴표 없어도 작동된다. */
+
+/* div1만 바뀜 */
 div[name="name1"] {
     background-color: orangered;
 }
 
+/* div3만 바뀜 */
 div[name="name3 name1"]{
     background-color: skyblue;
 } 
 
-/* div 중 name 속성 안에 name1이 포함되어 있는 태그(속성 값이 띄어쓰기로 구분된 것들만 찾아보자) */
+/* div 중 name 속성 안에 name1이 포함되어 있는 태그(속성 값이 띄어쓰기로 구분된 것들만 찾아보자) == div 1, 3만 바뀜*/
 div[name~="name1"] {
     background-color: yellow;
 }
 
-/* div 중 class 속성에서 class로 시작되는 태그 (-로 구분) */
+/* div 중 class 속성에서 class로 시작되는 태그 (-로 구분) ==> div4만 바뀜 */
 div[class|="class"] {
     background-color: aqua;
 }
 
-/* div 태그 중에 name 속성이 name으로 시작되는 태그 */
+/* div 태그 중에 name 속성이 name으로 시작되는 태그 ==> div 1234 다 파란색으로 바뀜 */
 div[name^="name"]{
     background-color: blue;
 } 
 
-/* div 중 class 속성이 class로 끝나는 경우 */
+/* div 중 class 속성이 class로 끝나는 경우 ==> div 123 만 바뀜 */
 div[class$=class]{
     color: white;
 }
 
-/* div 중  class 속성에 i를 포함하는 태그*/
+/* div 중  class 속성에 i를 포함하는 태그 == div 1234 다 바뀜*/
 div[class*=i]{
     background-color: yellowgreen;
     color: red;
 }
 
-/* class가 div-class인 것을 찾고 그 중에 name 속성 값에 name3이 포함되어 있는 경우(속성값이 띄어쓰기로 구분) */
+/* class가 div-class인 것을 찾고 그 중에 name 속성 값에 name3이 포함되어 있는 경우(속성값이 띄어쓰기로 구분) == div3만 바뀜 */
 .div-class[name~="name3"]{
     background-color: hotpink;
 }
@@ -78,6 +83,8 @@ div[class*=i]{
 근데 바로 뒤에 p 태그가 있으면 동작하지 않는다.
 div-test 바로 뒤에 div가 있으면 백그라운드 컬러가 변경이 되는데
 p가 있으면 동작은 안한다. */
+
+
 /* 
 #div-test~div{
     background-color: seagreen;
@@ -130,7 +137,7 @@ input[type=checkbox]:checked+label{
 
 /* 초점 테스트 */
 #userId:focus, #userPwd:focus {
-    background-color: lightgoldenrodyellow;
+    background-color: wheat;
     border:2px solid red;
 }
 
@@ -141,7 +148,7 @@ option:disabled{
 }
 
 option:enabled{
-    background-color: turquoise;
+    background-color: greenyellow;
     color: white;
 }
 
@@ -150,13 +157,14 @@ button:disabled{
 }
 
 button:enabled{
-    background-color: indianred;
+    background-color: yellowgreen;
 }
 
 /* -------------------------------------------------- */
 
 /* 일반 구조 선택자 */
 /* 형제 관계 태그 중 첫 번째 태그 선택  */
+/* <pre>테스트 0</pre> 가 있으면 자식의 첫번째 태그이기 때문에 적용이 안된다. */
 #test1 p:first-child{
     background-color: red;
     color:white;
@@ -170,8 +178,9 @@ button:enabled{
 }
 
 /* 형제 관계 태그 중 앞에서 수열번 째 태그 선택 */
-/* (2n, 2n+1 같은 수식을 쓰거나 even:짝수 odd:홀수를 써도 된다.) */
-#test1 p:nth-child(even){
+/* (n부터 1부터 하나씩 증가해서 모두 다 적용, n번째에 해당하는 숫자를 써도 된다.
+    2n, 2n+1 같은 수식을 쓰거나 even:짝수 odd:홀수를 써도 된다.) */
+#test1 p:nth-child(2n){
     background-color: yellowgreen;
     color: white;
 }
@@ -187,13 +196,14 @@ button:enabled{
 /* -------------------------------------------------- */
 /* 형태 구조 선택자 */
 /* 형제 관계 태그 중 첫 번째 태그 선택 */
-/* 요소의 타입만 체크한다. 타입만 가지고 순번이 무엇인지 판단한다.
-하위 요소들 중에 <p>태그들만 가지고 카운트를 하기 때문에 스타일 적용이 가능하다. */
+
 #test2 p:first-of-type {
     background-color: red;
     color: white;
 }
 
+/* 요소의 타입만 체크한다. 타입만 가지고 순번이 무엇인지 판단한다.
+하위 요소들 중에 <p> 태그들만 가지고 카운트를 하기 때문에 스타일 적용이 가능하다. */
 #test2 p:last-of-type{
     background-color: orange;
     color: white;
@@ -244,6 +254,7 @@ button:enabled{
 /* -------------------------------------------------- */
 /* 부정 선택자 */
 /* p 태그들 중에서 클래스가 p1이 아닌 애들만 바꾼다. */
+/* 테스트 1 2 4 5에 해당함 */
 /* #test4 p:not(.p1){
     background-color: coral;
 } */

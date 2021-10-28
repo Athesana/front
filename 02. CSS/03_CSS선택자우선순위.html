@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 우선 순위</title>
+    <style>
+        h1{
+            color: hotpink;
+        }
+
+        h1 {
+            background-color: seagreen;
+            color:red;
+        }
+
+        #test1{
+            background-color: hotpink;
+            /* width: 150px;
+            height: 150px; */
+        }
+
+        .test1{
+            background-color: yellowgreen;
+            color: white;
+        }
+        /* background는 적용이 안됨. 왜냐면 동일 요소(div)에서는 아이디 선택자가 더 우선 순위가 높아서 클래스 선택자에는 스타일 적용이 안된다. 
+            color는 적용이 된다. */
+
+        div{
+            background-color: tomato;
+            width: 300px;
+            height:300px;
+        }
+        /* 만약 div태그 요소인 test1에서 width랑 height를 지정한 적이 있고,
+        그 다음 아이로 지정되지 않은 div 태그가 존재하면 그 두번째 div가 width 300px, height 300px으로 바뀐다. */
+
+        #test2 {
+            width: 300px;
+            height: 300px;
+            background: yellow;
+            color:black;
+        }
+
+        .test2{
+            background: black;
+            color:white;
+        }
+
+        /* test2의 클래스 선택자는 적용되지 않는다. */
+
+        p{
+            background-color: springgreen !important;
+            color: white !important;
+            font-size: x-large;
+        }
+
+        /* 원래는 font-size만 바뀌게 되지만, !important 넣으면 된다. */
+
+    </style>
+</head>
+<body>
+    <h1>선택자 우선 순위</h1>
+
+    <p>
+        기본적으로 CSS 속성은 위에서부터 아래로 적용이 되지만, <br>
+        같은 태그에 다양한 선택자로 CSS 속성이 설정된 경우에는 우선 순위에 따라서 스타일이 적용된다.
+
+        <br><br>
+
+        <b>[우선 순위 낮(왼쪽) -> 높(오른쪽)]</b>>
+        <br><br>
+        태그 선택자 &lt; 클래스 선택자 &lt; 아이디 선택자 &lt; 인라인 선택자 &lt; !important
+    </p>
+
+    <h3>선택자 우선 순위</h3>
+    <!-- div#test1.test1{우선순위 테스트 1} -->
+    <div id="test1" class="test1" style="background-color: violet;">우선순위 테스트 1</div>
+
+    <p id="test2" class="test2" style="background-color: tomato;">우선순위 테스트2</p>
+
+</body>
+</html>
