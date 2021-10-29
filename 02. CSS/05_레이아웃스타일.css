@@ -1,0 +1,285 @@
+/* 기본 스타일 테스트 */
+.size-test{
+    border: 2px solid red;
+}
+
+#fixed-size{
+    width: 200px;
+    height: 200px;
+}
+
+/* 부모 (<body> 태그) 는 자식의 컨텐츠만큼 커진다. 
+따라서 부모인 body도 크기를 가져야 부모 크기를 기반으로 가변 크기의 크기가 정해진다. 
+<body>의 크기를 지정 안한 상태에서
+자식인 가변크기는 컨텐츠가 없기 때문에 부모 영역이 딱 자식 사이즈만큼 이라서 height의 크기를 줘도 변화가 없었던 것*/
+#variable-size{
+    width: 50%;
+    height: 200px;
+}
+
+.display{
+    width: 150px;
+    height: 50px;
+    border: 2px solid black;
+    color: white;
+}
+
+#area1{
+    background-color: red;
+}
+
+#area2{
+    background-color: orange;
+}
+
+#area3{
+    background-color: yellow;
+}
+
+#area4{
+    background-color: green;
+}
+
+#area5{
+    background-color: blue;
+}
+
+.display-inline{
+    display: inline;
+}
+/* block 요소를 inline으로 바꾼 것
+원래 block은 한 줄을 차지하기 때문에 다른 요소와 나란히 할 수 없다. */
+/* 한 줄 씩 차지하던 요소가 인라인 요소로 나란히 옆으로 나열하게 된다. */
+
+.display-inline-block{
+    display: inline-block ;
+}
+
+/* 크기는 위에서 display에 정한 스타일대로 width&height만큼 가지게 된다. */
+
+.display-block{
+    display: block;
+}
+
+/* 테두리 스타일 테스트 */
+
+.border{
+    width: 100px;
+    height: 100px;
+    border: 3px;
+    
+}
+
+#border-test1{
+    border-style: none;
+}
+
+#border-test2{
+    border-style: hidden;
+    box-shadow: -10px -10px 10px 10px gray inset;
+}
+
+#border-test3{
+    border-style: dotted;
+}
+
+#border-test4{
+    border-style: dashed;
+    border-top-color: hotpink;
+    /* border-color: blue; */
+}
+
+#border-test5{
+    border-style: double;
+    border-color: red;
+}
+
+#border-test6{
+    border-style: groove;
+    border-top-left-radius: 10px 20px;
+}
+
+#border-test7{
+    border-style: inset;
+    border-bottom-left-radius: 50px;
+}
+
+#border-test8{
+    border-style: outset;
+}
+
+#border-test9{
+    border-style: solid;
+}
+
+#border-test10{
+    border-style: ridge;
+}
+
+/* 여백 스타일 테스트 */
+.space{
+    width: 100px;
+    height: 100px;
+    background-color: beige
+}
+
+#padding1{
+    padding: 50px;
+}
+
+#padding2{
+    padding-top: 50px;
+    padding-right: 100px;
+}
+
+#margin1{
+    margin: 50px;
+}
+
+#margin2{
+    margin-top: 60px;
+    margin-left: 20px;
+}
+
+/* 포지셔닝 테스트 */
+
+/* 
+    아무런 포지션 값이 없는 상태->문서 구성에 따라서 순서대로 위에서 아래로 위치한다.
+    h4라는 블록 다음이 outer의 위치!
+    
+    outer에게는 3개의 자식이 있어서 각각 부모 크기의 100%를 차지해서 위치(한 줄 씩)
+
+    구조에 따라서 위치가 정해지는 것 = static
+*/
+
+/*
+    포지션을 relative로 바꾼 상태 -> outer의 위치가 바뀌면 자식들도 함께 이동
+    문서 구성상 원래 있어야 하는 위치에서 내가 정한 오프셋 속성값만큼 그 위치로 이동
+*/
+
+/* 
+    포지션을 absolute로 바꿔주는 상태 = 문서 흐름과 상관없이 좌표값에 따라서 위치할 수 있게 하는 것
+    offset 값이 없으면 원래 있어야 하는 body의 기준에 따라서 이동해버림
+    이 요소가 포함되어 있는 가장 가까운 (부모나, 조상)상위 요소에 static이 아닌 애들 = body을 기준으로 이동한다.
+    따라서 가까운 상위요소를 relative로 바꿔주면 걔는 static이 아니기 때문에 따라 내려오게 된다.
+    */
+
+.outer{
+    position: relative;
+    /* top: 100px;
+    left: 100px; */ 
+    /* 위에 위,아래,좌,우 = "offset 속성"이라고 부름
+    position이 absolute인데 offset 값을 주지 않으면 
+    auto로 설정된고 원래 있어야 되는 위치로 잡는다. => body로 고고
+    활성화 시켜놓으면 자식들 위치도 다 따라온다. */
+    /* 부모가 static만 아니면 relative든 fixed든 상관없이 겹쳐진다. */
+    border: 1px solid;
+}
+/* 부모의 높이와 길이는 자식들 바뀌는 것에 따라서 바뀔 수 있다. */
+
+#first{
+    width: 300px;
+    height: 300px;
+    background-color: yellow;
+}
+
+#second{
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 200px;
+    height: 200px;
+    background-color: yellowgreen;
+}
+/* 부모 중에 static이 아닌 애들이 없기 때문에 body를 기준으로 위치가 변경된다. (맨 위로 올라가버림) */
+/* 부모는 outer 이고 first는 형제임*/
+
+
+#third{
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+#fixed-area{
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    /* position: fixed; */
+    position: sticky;
+    top: 50px;
+    left: 50px;
+}
+/* 브라우저에 표시되는 영역을 기준으로 표시한다. fixed 뒤에 꼭 offset 값 작성! */
+/* sticky = 원래 위치에서 더 아래로 내려가면 따라 내려온다. */
+
+/* visibility 테스트 */
+.visibility{
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+    margin-bottom: 5px;
+}
+
+#v-test1{
+    background-color: pink;
+}
+
+#v-test2{
+    visibility: hidden;
+    /* display: none; */
+    background-color: beige;
+}
+
+#v-test3{
+    background-color: skyblue;
+}
+
+/* z-index 테스트 */
+.z-test{
+    width: 150px;
+    height: 150px;
+    border: 1px solid;
+    position: absolute;
+}
+
+#z-outer{
+    position: relative;
+    height: 310px;
+}
+
+#z1{
+    background-color: seagreen;
+    top: 50px;
+    left: 50px;
+    z-index: 2;
+}
+
+#z2{
+    background-color: orange;
+    top: 100px;
+    left: 100px;
+    z-index: 4;
+
+}
+
+#z3{
+    background-color: violet;
+    top: 150px;
+    left: 150px;
+    z-index: 3;
+}
+
+
+/* float 테스트 */
+.float-test{
+    border: 1px solid;
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: 3px;
+    margin-bottom: 10px;
+}
