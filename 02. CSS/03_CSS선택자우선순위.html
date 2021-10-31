@@ -15,6 +15,8 @@
             color:red;
         }
 
+        /* 동일한 div 요소를 아이디로 선택하기도 하고 클래스로 선택하기도 한 상황임 */
+
         #test1{
             background-color: hotpink;
             /* width: 150px;
@@ -26,15 +28,20 @@
             color: white;
         }
         /* background는 적용이 안됨. 왜냐면 동일 요소(div)에서는 아이디 선택자가 더 우선 순위가 높아서 클래스 선택자에는 스타일 적용이 안된다. 
-            color는 적용이 된다. */
+            color는 이전에 설정한 적이 없으므로 적용이 된다. */
 
         div{
             background-color: tomato;
             width: 300px;
             height:300px;
         }
-        /* 만약 div태그 요소인 test1에서 width랑 height를 지정한 적이 있고,
-        그 다음 아이로 지정되지 않은 div 태그가 존재하면 그 두번째 div가 width 300px, height 300px으로 바뀐다. */
+        /* 
+            위에서 width와 height에 대해서 지정된 게 없기 때문에 스타일 적용이 된다.
+            여기에서 정한 토마토 컬러는 밑에 본문에서 또 다른 div 태그가 존재할 경우 해당한다.
+            = 문서 안에 있는 div 전체를 바꾸겠다는 의미(but 위에서 정한 test1 div는 이미 yellowgreen으로 정했으니까 빼고)
+            만약 div태그 요소인 test1에서 width랑 height를 지정한 적이 있고,
+            그 다음, 아이디로 지정되지 않은 div 태그가 존재하면 그 두번째 div가 width 300px, height 300px으로 바뀐다. 
+        */
 
         #test2 {
             width: 300px;
@@ -48,7 +55,7 @@
             color:white;
         }
 
-        /* test2의 클래스 선택자는 적용되지 않는다. */
+        /* 위 : test2의 클래스 선택자는 적용되지 않는다. */
 
         p{
             background-color: springgreen !important;
@@ -65,20 +72,26 @@
 
     <p>
         기본적으로 CSS 속성은 위에서부터 아래로 적용이 되지만, <br>
-        같은 태그에 다양한 선택자로 CSS 속성이 설정된 경우에는 우선 순위에 따라서 스타일이 적용된다.
+        같은 태그에 다양한 선택자로 CSS 속성이 설정된 경우에는 우선 순위에 따라서 스타일이 적용된다. <br>
+        같은 우선 순위라면 나중에 작성된 스타일이 적용된다.
 
         <br><br>
 
         <b>[우선 순위 낮(왼쪽) -> 높(오른쪽)]</b>>
+
         <br><br>
+
         태그 선택자 &lt; 클래스 선택자 &lt; 아이디 선택자 &lt; 인라인 선택자 &lt; !important
     </p>
 
     <h3>선택자 우선 순위</h3>
     <!-- div#test1.test1{우선순위 테스트 1} -->
+    <!-- 태그에서 직접 스타일 주는 것 = 인라인 선택자 -->
     <div id="test1" class="test1" style="background-color: violet;">우선순위 테스트 1</div>
 
     <p id="test2" class="test2" style="background-color: tomato;">우선순위 테스트2</p>
+
+    <!-- <div><div> 스타일에 정한 토마토 컬러가 적용되게 될 경우 -->
 
 </body>
 </html>
