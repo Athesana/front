@@ -269,6 +269,7 @@
 #z-outer{
     position: relative;
     height: 310px;
+    border: 1px solid;
 }
 
 #z1{
@@ -303,3 +304,47 @@
     margin-right: 3px;
     margin-bottom: 10px;
 }
+
+/* 다단 스타일 */
+.column-wrap{
+    border: 1px solid;
+    height: 250px;
+    overflow: scroll;
+}
+
+#column1{
+    column-width: 300px;
+    column-gap: 50px;
+}
+
+#column2{
+    column-count: 5;
+    column-rule-style: dashed;
+    column-rule-color: orange;
+}
+
+#column2>h4{
+    column-span: all;
+}
+
+/* 테이블 스타일 테스트 */
+table{
+    caption-side: bottom;
+    width: 300px;
+    height: 400px;
+    border: 1px solid;
+    /* border-collapse: collapse; */
+    border-spacing: 30px;
+    empty-cells: hide;
+    table-layout: fixed;
+    word-break: break-all;
+}
+
+td{
+    border: 1px solid;
+    width: 80px;
+    height: 100px;
+    text-align: center;
+    vertical-align: bottom;
+}
+
