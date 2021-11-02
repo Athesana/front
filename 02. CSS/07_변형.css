@@ -76,3 +76,34 @@
 #trans3-6:hover{
     transform: perspective(300px) rotate3d(1, 1, 1, 45deg);
 }
+
+#left-top:hover{
+    transform-origin: left top;
+    transform: rotate(60deg);
+}
+
+#right-top:hover{
+    transform-origin: right top;
+    transform: rotate(25deg);
+}
+
+#left-bottom:hover{
+    transform-origin: left bottom;
+    transform: rotate(30deg);
+}
+
+#right-bottom:hover{
+    transform-origin: ribght bottom;
+    transform: rotate(30deg);
+}
+
+/* backface-visibilty 테스트 */
+#back1:hover{
+    backface-visibility: hidden;
+    transform: rotateX(180deg);
+}
+
+#back2:hover{
+    backface-visibility: visible;
+    transform: rotateX(180deg);
+}

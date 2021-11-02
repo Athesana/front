@@ -272,7 +272,7 @@
     border: 1px solid;
 }
 
-#z1{
+#z1{ 
     background-color: seagreen;
     top: 50px;
     left: 50px;
@@ -304,6 +304,7 @@
     margin-right: 3px;
     margin-bottom: 10px;
 }
+/* div는 블록요소라서 한 줄에 나란히 위치할 수 없지만 float 속성을 주면 띄워서 설정한 위치에 나란히 위치한다. (블록 속성이 바뀌지는 않았다.) */
 
 /* 다단 스타일 */
 .column-wrap{
