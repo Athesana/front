@@ -32,9 +32,9 @@
                     행과 열로 이루어져 있고, 행과 열이 만나는 지점을 셀이라고 한다.
 
         표를 만드느 기본적인 태그는 <table>, <tr>, <th>, <td>가 있다.
-        <tr></tr> : 표의 행을 나타내는 태그이다.
+        <tr></tr> : 한 개의 행(row)을 만드는 태그, 표의 행을 나타내는 태그이다.
         <th></th> : 표의 제목 셀을 나타내는 태그이다. (가운데 정렬, 글자 굵게)
-        <td></td> : 표의 일반 셀을 나타내는 태그이다.
+        <td></td> : 한 개의 열을 만드는 태그, 표의 일반 셀을 나타내는 태그이다.
         
         * 기본적인 구조
 
@@ -99,6 +99,8 @@
         <figcaption>설명 내용을 여러 줄로 표기할 수도 있다.</figcaption>
     </figure>
 
+    <hr>
+
     <h3>표의 행과 열 합치기</h3>
     <!-- 
         <td> 태그의 속성을 이용하여 행과 열의 합치기를 할 수 있다.
@@ -106,6 +108,7 @@
         colspan : 지정한 수만큼 열을 병합
     -->
     <h4>회원 정보</h4>
+    <!-- 4행 4열 테이블로 예제 실행 -->
     
     <table border = "1">
         <tr>
@@ -140,6 +143,32 @@
         </tr>
     </table>
 
+    <hr>
+    <br>
+
+    <table border="1px">
+        <tr>
+            <td colspan="2" rowspan="2" width="100px" height="100px">사진</td>
+            <td width="75px">이름</td>
+            <td width="350px"></td>
+        </tr>
+        <tr>
+            <td>연락처</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td width="55px" height="50px">주소</td>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td height="100px">자기소개</td>
+            <td colspan="3"></td>
+        </tr>
+    </table>
+
+
+    <br>
+    <hr>
     <h3>테이블 태그의 구조 설정</h3>
     <table border = "1">
         <thead>
@@ -175,7 +204,14 @@
     </table>
 
 
+<!-- 
+    * 테이블 구조를 나누는 태그
+    <thead> : 테이블에 하나만 존재
+    <tbody> : 몸체, 테이블에 여러 개 존재 가능
+    <tfoot> : <thead> 뒤에 존재, 하나만 존재
 
+    <col> : 열에 대한 스타일 적용, <caption> 뒤, <tr><td> 태그 전
+-->
 
 
 

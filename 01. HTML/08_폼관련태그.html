@@ -20,16 +20,18 @@
         * autocomplete : 이전 입력 내용 출력하는 기능, 생략하면 자동으로 출력된다. (default : on, 각 태그별로 지정 가능)
                         form 태그 옆에 작성해 놓으면 input 태그들에 모두 자동 적용 (form에서 input을 관리하니까 통으로 적용됨)
                         통으로 관리되는게 싫으면 태그 옆에 하나씩 적용하고, password는 원래 적용 안된다.(=저장하지 않는다.)
+        * input : 사용자로부터 data를 입력받기 위한 태그(type -> text, checkbox, radio 등 입력 창의 타입을 결정하는 속성)
     -->
     <h3>폼 태그의 기본 구조</h3>
     <form action="" method="post" autocomplete="off">
         <label>
             <!-- 
+                ** <label> 
                 name : "form 태그 안에서" input 태그를 구분하는 역할을 한다.
                         나중에 서버로 값을 전달할 때 name 속성과 ="텍스트" 필드에 작성된 값이 세트(key=)로 넘어간다.
                 검색 창 앞에 이름으로 지정한 부분을 눌러도 입력창에 커서가 활성화 된다.
             -->
-            검색할 내용 : <input type="text" size="10" name="search" autocomplete="off">
+            검색할 내용 : <input type="text" size="20" name="search" autocomplete="off">
         </label>
     
         <!-- 
@@ -77,6 +79,17 @@
                     maxlength="10" placeholder="아이디를 입력해주세요." required>
             </label>
 
+            <h4>type="password"</h4>
+
+            <p>
+                - 비밀번호를 입력할 수 있는 텍스트 상자이다.
+            </p>
+
+            <label>
+                비밀번호 : <input type="password" name="userPwd" size="20"
+                maxlength="15" placeholder="5글자 이상 입력하세요." required>
+            </label>
+
             <h4>type="text"에서 새로 추가된 기능</h4>
             <p>
                 datalist 태그를 사용하여 텍스트 필드에서 데이터 목록 중에서 값을 선택하도록 만들 수 있다.
@@ -92,17 +105,6 @@
                 <option value="skyblue">하늘색</option>
             </datalist>
 
-            <h4>type="password"</h4>
-
-            <p>
-                - 비밀번호를 입력할 수 있는 텍스트 상자이다.
-            </p>
-
-            <label>
-                비밀번호 : <input type="password" name="userPwd" size="20"
-                maxlength="15" placeholder="5글자 이상 입력하세요." required>
-            </label>
-
             <h4>type="search", type="url", type="email", type="tel"</h4>
 
             <p>
@@ -112,6 +114,7 @@
             <label>
                 검색 : <input type="search" name="searchText" placeholder="검색할 내용 입력"> 
             </label>
+            <!-- 검색창에 텍스트를 입력하면 옆에 X 표시가 뜨면서 검색 내용 손 쉽게 지울 수 있는 기능 -->
 
             <br><br>
             
@@ -125,6 +128,7 @@
             <label>
                 이메일 : <input type="email" name="email" placeholder="이메일을 입력하세요.">
             </label>
+            <!-- 사용자가 입력한 값이 이메일 형식인지 자동으로 체크해주는 기능 -->
             
             <br><br>
 
@@ -278,12 +282,17 @@
             <input type="button" value="버튼" >
             <input type="submit" value="전송">
             <input type="reset" value="다시입력">
+            <!-- 
+                submit : input 태그에 있는 데이터들을 서버로 전송 
+                button : 자바스크립트 함수 이용해서 기능 추가해야 한다.
+            -->
 
             <h4>button 태그를 사용</h4>
             <button>전송</button>
             <button type="submit"><i>전송</i></button>
             <button type="reset">다시 입력</button>
             <button type="button">버튼</button>
+            <!-- 일반 button -> get방식으로 전송 기능 -->
             <!-- 일반적으로 "form 태그 안에서" button을 사용하면 submit 역할을 한다. 타입 지정도 가능하다. 
                 다른 태그랑 겹쳐서 사용 가능<i><b></b></i>같은 것
             -->
@@ -323,7 +332,7 @@
             </p>
 
             <textarea name="textarea" id="textarea" cols="30" rows="10"
-                style="resize:none;" placeholder="내용을 입력해주세요."></textarea>
+            style="resize:none;" placeholder="내용을 입력해주세요."></textarea>
 
             <h4>progress</h4>
             <p>
