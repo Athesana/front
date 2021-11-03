@@ -1,0 +1,25 @@
+input{
+    width: 300px;
+}
+
+textarea{
+    width:300px; 
+	height:150px; 
+    resize:none;
+}
+
+button{
+    display: block;
+    margin: auto;
+}
+
+
+thead tr, tfoot tr{
+    background-color: coral;
+    color: white;
+}
+
+#two tr{
+    background: wheat;
+}
+
