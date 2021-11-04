@@ -56,10 +56,33 @@
         버튼에 따라 크기 조절이 가능하도록 만들기
     </p>
 
-    <div class="div-test"></div>
-    <button>50X50</button>
-    <button>원본(100X100)</button>
-    <button>200X200</button>
+
+    <div id="area2" class="div-test"></div>
+    <button onclick="sizeChange50();" id="size50">50X50</button>
+    <button onclick="sizeChange100();" id="size100">원본(100X100)</button>
+    <button onclick="sizeChange200();" id="size200">200X200</button>
+
+    <script>
+        function sizeChange50(){
+            var size50 = document.getElementById('size50');
+            area2.style.width = "50px";
+            area2.style.height = "50px";
+
+        }
+
+        function sizeChange100(){
+            var size100 = document.getElementById('size100');
+            area2.style.width = "100px";
+            area2.style.height = "100px";
+        }
+
+        function sizeChange200(){
+            var size200 = document.getElementById('size200');
+            area2.style.width = "200px";
+            area2.style.height = "200px";
+        }
+
+    </script>
 
     <hr>
 
@@ -67,19 +90,156 @@
     <p>
         텍스트 박스로 입력받은 데이터를 가져와서 출력하기
     </p>
-
-    <label>구매자 : <input type="text" placeholder="구매자의 이름을 입력하세요."></label>
+<!-- 
+    <label>구매자 : <input type="text" name="purchasePrint" id="name" placeholder="구매자의 이름을 입력하세요."></label>
     <br><br>
 
-    <label>상품명 : <input type="text" placeholder="구매 상품명을 입력하세요."></label>
+    <label>상품명 : <input type="text" name="purchasePrint" id="product" placeholder="구매 상품명을 입력하세요."></label>
     <br><br>
 
-    <label>가격 : <input type="text" placeholder="구매 가격을 입력하세요."></label>
+    <label>가격 : <input type="text" name="purchasePrint" id="price" placeholder="구매 가격을 입력하세요."></label>
     <br><br>
 
-    <button>입력값 출력하기</button>
+    <button type="button" value="입력값 확인" onclick="printValue();">입력값 출력하기</button>
+
+    <div id="area" class="area"></div>
+
+    <script>
+        function printValue(){
+            var input = document.getElementById('name');
+            var name = input.value;
+
+            if(name.trim() == '' || name.length == 0){
+                alert('이름을 입력하세요.');
+
+                input.value = '';
+                input.focus();
+            } else {
+                document.getElementById('area').innerHTML += name + '<br>';
+
+                input.value = '';
+                input.focus();
+            }
+
+        }
+
+        function printValue(){
+            var input = document.getElementById('product');
+            var product = input.value;
+
+            if(product.trim() == '' || product.length == 0){
+                alert('상품명을 입력하세요.');
+
+                input.value = '';
+                input.focus();
+            } else {
+                document.getElementById('area').innerHTML += product + '<br>';
+
+                input.value = '';
+                input.focus();
+            }
+
+        }
+
+        function printValue(){
+            var input = document.getElementById('price');
+            var price = input.value;
+
+            if(price.trim() == '' || price < 0){
+                alert('가격을 입력하세요.');
+
+                input.value = '';
+                input.focus();
+            } else {
+                document.getElementById('area').innerHTML += price + '원' + '<br>';
+
+                input.value = '';
+                input.focus();
+            }
+
+        }
+
+    </script> -->
+
+
+
+
+    <h2>문제 3-1. HTML 태그에 접근</h2>
+    <p>
+        텍스트 박스로 입력받은 데이터를 가져와서 출력하기
+    </p>
+
+    <!-- <label>구매자 : <input type="text" name="purchase" id="userName" placeholder="구매자의 이름을 입력하세요."></label> 
+
+    <br><br>
+
+    <label>상품명 : <input type="text" name="purchase" id="productName" placeholder="구매 상품명을 입력하세요."></label>
+
+    <br><br>
+
+    <label>가격 : <input type="text" name="purchase" id="totalPrice" placeholder="구매 가격을 입력하세요."></label>
+
+    <br><br>
+
+    <button onclick="inputOutput();">입력값 출력하기</button>
+
+    <div id="area" class="area"></div>
+
+    <script>
+        function inputOutput(){
+            var purchases = document.getElementsByName('purchase');
+            var area = document.getElementById('area');
+
+            for(let index = 0; index < purchases.length; index++){
+                console.log(purchases[index]);
+
+                if(purchases[index] != null){
+                    area.innerHTML += purchases[index].value + '<br>';
+                } else {
+                    alert('입력되지 않았습니다.');
+                }
+
+            }
+        }
+    </script> -->
+
+    <h2>문제 3-2. HTML 태그에 접근</h2>
+    <p>
+        텍스트 박스로 입력받은 데이터를 가져와서 출력하기
+    </p>
+
+    <label>구매자 : <input type="text" placeholder="구매자의 이름을 입력하세요."></label> 
+
+    <br><br>
+
+    <label>상품명 : <input type="text" id="productName" placeholder="구매 상품명을 입력하세요."></label>
+
+    <br><br>
+
+    <label>가격 : <input type="text" name="totalPrice" placeholder="구매 가격을 입력하세요."></label>
+
+    <br><br>
+
+    <button onclick="inputOutput();">입력값 출력하기</button>
 
     <div id="area"></div>
+
+
+    <script type="text/javascript">
+        function inputOutput(){
+            var nameArray = document.getElementsByTagName("input");
+            var name = nameArray[0].value;
+            var productName = document.getElementById("productName").value;
+            var priceArray = document.getElementsByName("totalPrice");
+            var totalPrice = priceArray[0].value;
+
+            var area = document.getElementById("area");
+            area.innerHTML += "구입자 : " + name + "님<br>";
+            area.innerHTML += "구매 상품명 : " + productName + "<br>";
+            area.innerHTML += "구입 가격 : " + totalPrice + "만원";
+                
+        }
+    </script>
 
     <hr>
     
@@ -89,12 +249,34 @@
         아래의 div 태그에 innerHTML 속성을 사용해서 만들어진 테이블을 포함한다.
     </p>
 
-    <button>테이블 생성</button>
+    <button onclick="makeTable();">테이블 생성</button>
 
     <div></div>
 
+    <script>
+        function makeTable(){
+            var row = prompt('열의 개수를 입력하세요.');
 
+            console.log(row);
 
+            if(row != null && row.trim() != '' && row > 0){
+                alert(`행의 개수는 ${row} 입니다.`);
+            } else {
+                alert('잘못 입력하셨습니다.');
+            }
+
+            var column = prompt('열의 개수를 입력하세요.');
+
+            console.log(column);
+
+            if(column != null && column.trim() != '' && column > 0){
+                alert(`열의 개수는 ${column} 입니다.`);
+            } else {
+                alert('잘못 입력하셨습니다.');
+            }
+        }
+
+    </script>
 
 
 

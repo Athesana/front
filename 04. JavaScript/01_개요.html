@@ -23,7 +23,7 @@
     <h2>자바스크립트</h2>
 
     <p>
-        웹 브라우저에서 많이 사용되는 인터프리터 방식의 스크립트 언어(함수, 객체지향)
+        웹 브라우저에서 많이 사용되는 인터프리터 방식의 스크립트 언어(함수 지향적, 객체 지향적)
             - 인터프리터 방식 : 컴파일 과정 없이 실행하면서 코드를 하나씩 읽어내는 방식이다. (코드의 문법 오류가 있으면 실행 시점에 알 수 있다.)
     </p>
 
@@ -57,15 +57,19 @@
 
     <script>
         // script 태그 내에서 아이디를 통해 button 요소(객체)를 변수에 대입한다.
+        // 문서에서.요소를id를 가지고 가져올건데 btn1에 해당하는 객체를 변수 btn1에 대입할거야.
         var btn1 = document.getElementById('btn1');
 
-        // 해당 버튼을 클릭했을 때의 이벤트 핸들러를 연결 (이거는 고전모델)
+        // 해당 버튼을 클릭했을 때의 이벤트 핸들러(여기서는 함수(){~실행내용~})를 연결 (이거는 고전모델)
+        // 함수 이름 생략 가능, 주소값 대신에 함수에 이름을 붙여주고 이름을 통해서 메모리에 저장된 함수를 실행
         // btn1.onclick = function(){
         //     console.log('버튼 클릭!!');
         // }
 
         // 이벤트 = 프로그램 입장에서 사용자가 하는 행위
-        // function을 addEventListener 메소드에다가 매개값으로 전달한다.
+        // 이벤트 핸들러 = 사용자로 인해 생긴 이벤트들을 처리하는 함수
+        // addEventLister(이벤트이름, 리스너(=함수))
+        // function 함수를 addEventListener 메소드의 매개값으로 전달한다.
         // 표준 모델, 함수 이름 생략 가능
         btn1.addEventListener('click', function(){
             console.log('버튼 클릭!!');
@@ -283,7 +287,7 @@
     <h4>text 박스의 value 값 읽어오기</h4>
 
     <form>
-        <label for="">이름 : <input type="text" name="userName" id="userName" size="15"></label>
+        <label for="">이름 : <input type="text" name="userName" id="userName" size="20"></label>
         <input type="button" value="input 값 확인" onclick="readValue();">
     </form>
 
