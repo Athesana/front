@@ -19,6 +19,13 @@
             height: 200px;
             margin-top: 5px;
         }
+
+        td{
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
@@ -49,11 +56,26 @@
         }
     </script>
 
+    <!-- 
+        input 요소에 접근해보자.
+        var color = document.getElementById('selectedColor').value
+        alert(color);
+        라고 하면 컬러 코드가 얼럿으로 출력된다.
+
+        div에 id를 붙여주고 요소를 자바스크립트에서 객체로 불러온다.
+        var area1 = document.getElementById('area1');
+
+        div.style.backgroundColor = color;
+    -->
+    <!-- 
+        <답안> 
+    -->
+
     <hr>
 
-    <h2>문제 2. 크기 변경하기</h2>
+    <h2>문제 2. 크기 변경하기 1번 방법</h2>
     <p>
-        버튼에 따라 크기 조절이 가능하도록 만들기
+        버튼에 따라 크기 조절이 가능하도록 만들기 1번(버튼마다 함수만들기)
     </p>
 
 
@@ -84,7 +106,43 @@
 
     </script>
 
+
+    <!--
+        1. 버튼들마다 이벤트 처리가 필요하다. -> 각각 함수를 만든다.
+        2. div에 id를 준다. 주고 전역 변수로 처리한다. (스크립트 바로 밑에 만들면 다수의 함수에서 각각 다 접근할 수 있다.)
+        var area2 = document.getElementById('area2');
+    -->
+
     <hr>
+
+    <h2>문제 2. 크기 변경하기 2번 방법</h2>
+    <p>
+        버튼에 따라 크기 조절이 가능하도록 만들기(하나의 함수 + if문)
+    </p>
+
+
+    <div id="div2" class="div-test"></div>
+    <button onclick="setSize('1');">50X50</button>
+    <button onclick="setSize('2');">원본(100X100)</button>
+    <button onclick="setSize('3');">200X200</button>
+
+    <script>
+        var div2 = document.getElementById('div2');
+
+        function setSize(id){
+            if(id == '1'){
+                div2.style.width = "50px";
+                div2.style.height = "50px";
+            } else if(id == '2'){
+                div2.style.width = "100px";
+                div2.style.height = "100px";
+            } else {
+                div2.style.width = "200px";
+                div2.style.height = "200px";
+            }
+
+        }
+    </script>
 
     <h2>문제 3. HTML 태그에 접근</h2>
     <p>
@@ -161,51 +219,10 @@
 
     </script> -->
 
-
-
-
-    <h2>문제 3-1. HTML 태그에 접근</h2>
+    <h2>문제 3. HTML 태그에 접근</h2>
     <p>
-        텍스트 박스로 입력받은 데이터를 가져와서 출력하기
-    </p>
-
-    <!-- <label>구매자 : <input type="text" name="purchase" id="userName" placeholder="구매자의 이름을 입력하세요."></label> 
-
-    <br><br>
-
-    <label>상품명 : <input type="text" name="purchase" id="productName" placeholder="구매 상품명을 입력하세요."></label>
-
-    <br><br>
-
-    <label>가격 : <input type="text" name="purchase" id="totalPrice" placeholder="구매 가격을 입력하세요."></label>
-
-    <br><br>
-
-    <button onclick="inputOutput();">입력값 출력하기</button>
-
-    <div id="area" class="area"></div>
-
-    <script>
-        function inputOutput(){
-            var purchases = document.getElementsByName('purchase');
-            var area = document.getElementById('area');
-
-            for(let index = 0; index < purchases.length; index++){
-                console.log(purchases[index]);
-
-                if(purchases[index] != null){
-                    area.innerHTML += purchases[index].value + '<br>';
-                } else {
-                    alert('입력되지 않았습니다.');
-                }
-
-            }
-        }
-    </script> -->
-
-    <h2>문제 3-2. HTML 태그에 접근</h2>
-    <p>
-        텍스트 박스로 입력받은 데이터를 가져와서 출력하기
+        텍스트 박스로 입력받은 데이터를 가져와서 출력하기<br>
+        단, 구매자는 태그 이름, 상품명은 아이디, 가격은 네임 값으로 접근
     </p>
 
     <label>구매자 : <input type="text" placeholder="구매자의 이름을 입력하세요."></label> 
@@ -227,8 +244,8 @@
 
     <script type="text/javascript">
         function inputOutput(){
-            var nameArray = document.getElementsByTagName("input");
-            var name = nameArray[0].value;
+            var nameArray = document.getElementsByTagName('input');
+            var name = nameArray[1].value;
             var productName = document.getElementById("productName").value;
             var priceArray = document.getElementsByName("totalPrice");
             var totalPrice = priceArray[0].value;
@@ -241,6 +258,30 @@
         }
     </script>
 
+    <!-- 
+        1. 식별자 만들고 -> 함수 명명 -> 버튼에 온클릭 연결
+        2. 태그 
+        var inputList = document.getElementsByTagName('input'); -> 배열로 나열되니까.
+            console.log(inputList);
+        이 스크립트 시트에서 배열에서는 input 태그가 또 있어서 배열에 [0]이면 자꾸만 컬러코드가 나왔던 것!!!!!!
+        그래서 input[1]으로 하면 이름으로 잘 나온다.
+        var name= document.getElementsByTagName('input')[1].value;
+            console.log(name);
+
+        var productName = document.getElementById('productName').value;
+        var totalPrice = document.getLementsByName('totalPrice')[0].value;
+        name 속성도 여러개가 있을 수 있기 때문에 배열에 담아 준다. 따라서 인덱스 확인해보고 세팅할 것 how? 디버깅해서 .value 찍어보면 된다.
+
+        conle.log(name, productName, totalPrice);
+
+        3. 출력할 문구 만들어볼까요
+            area.innerHTML = `${name}님 구매하신 상품명은 ${productName}, 구매가격은 ${totalPrice}원 입니다.`;
+    -->
+
+    <!-- 
+        <답안>
+    -->
+
     <hr>
     
     <h2>문제 4. 테이블 만들기</h2>
@@ -251,43 +292,53 @@
 
     <button onclick="makeTable();">테이블 생성</button>
 
-    <div></div>
+    <div id="area3" style="margin-top: 10px;"></div>
 
-    <script>
-        function makeTable(){
-            var row = prompt('열의 개수를 입력하세요.');
+        <script>
+            function makeTable(){
+                var count = 1;
+                var table = '<table border="1">';
+                var row = prompt('테이블의 행의 개수는?');
+                var col = prompt('테이블의 열의 개수는?');
 
-            console.log(row);
+                console.log(row, col);
 
-            if(row != null && row.trim() != '' && row > 0){
-                alert(`행의 개수는 ${row} 입니다.`);
-            } else {
-                alert('잘못 입력하셨습니다.');
+                for (let i = 0; i < row; i++) {
+                    table += '<tr>';
+                        
+                        for (let j = 0; j < col; j++) {
+                            table += `<td>${count}</td>`;
+
+                            count++;
+                        }
+                        
+                        table += '</tr>';
+                }
+                
+                table += '</table>'
+                // area3.innerHTML = table;
+                document.getElementById('area3').innerHTML = table;
             }
+        </script>
 
-            var column = prompt('열의 개수를 입력하세요.');
+        <!-- 
+        1. 함수 만들기, 버튼에 이벤트 핸들러 등록하기, 변수 선언하기
 
-            console.log(column);
-
-            if(column != null && column.trim() != '' && column > 0){
-                alert(`열의 개수는 ${column} 입니다.`);
-            } else {
-                alert('잘못 입력하셨습니다.');
-            }
-        }
-
-    </script>
-
-
-
-
-
-
-
-
-
-
+        2. 테이블을 텍스트 형태로 태그 만들어서 그려주자. 
+        innetHTML 에서 값 읽거나 변경할 때 지정하면 문자 형태로 태그로 만들어서 넣어주면 텍스트가 아니라 태그로 인식해서 보여준다.
     
+        3. 입력받은 행, 열 가지고 문자 데이터로 innterHTML에 대입해서 테이블을 만들자.
+
+        4. area3은 document로 안해도 왜 되는걸까? 브라우저가 코드 내용을 위->아래로 읽으며 실행시킬 때,
+        DOM(Documnet Object Model) 트리; 문서 구조대로 요소들을 객체들을 만들어 놓고(by 아이디를 가지고) 아이디 부여하는 시점에 아이디 속성에 따라 객체를 만든다.
+        window.객체명 을 통해서 접근할 수 있다. 그런데 중간에 - 있거나 하면 인식 안되기 때문에 지양하는 방법 
+        document.get~~ 방법을 이용할 것
+
+        5. for문 중첩으로 바깥쪽 for문이 돌아갈 동안 행을, 안쪽 for문 돌아갈 동안 열을 만들어서 테이블 구조를 만든다.
+        -->
+
+
+
 
 
     <br><br><br><br><br><br>
