@@ -69,6 +69,13 @@
     -->
     <!-- 
         <답안> 
+    <script>
+        function colorChange(){
+            var area1 = document.getElementById('area1');
+            var color = document.getElementById('selectColor').value;
+
+            area1.style.backgroundColor = color;
+        }
     -->
 
     <hr>
@@ -144,80 +151,7 @@
         }
     </script>
 
-    <h2>문제 3. HTML 태그에 접근</h2>
-    <p>
-        텍스트 박스로 입력받은 데이터를 가져와서 출력하기
-    </p>
-<!-- 
-    <label>구매자 : <input type="text" name="purchasePrint" id="name" placeholder="구매자의 이름을 입력하세요."></label>
-    <br><br>
-
-    <label>상품명 : <input type="text" name="purchasePrint" id="product" placeholder="구매 상품명을 입력하세요."></label>
-    <br><br>
-
-    <label>가격 : <input type="text" name="purchasePrint" id="price" placeholder="구매 가격을 입력하세요."></label>
-    <br><br>
-
-    <button type="button" value="입력값 확인" onclick="printValue();">입력값 출력하기</button>
-
-    <div id="area" class="area"></div>
-
-    <script>
-        function printValue(){
-            var input = document.getElementById('name');
-            var name = input.value;
-
-            if(name.trim() == '' || name.length == 0){
-                alert('이름을 입력하세요.');
-
-                input.value = '';
-                input.focus();
-            } else {
-                document.getElementById('area').innerHTML += name + '<br>';
-
-                input.value = '';
-                input.focus();
-            }
-
-        }
-
-        function printValue(){
-            var input = document.getElementById('product');
-            var product = input.value;
-
-            if(product.trim() == '' || product.length == 0){
-                alert('상품명을 입력하세요.');
-
-                input.value = '';
-                input.focus();
-            } else {
-                document.getElementById('area').innerHTML += product + '<br>';
-
-                input.value = '';
-                input.focus();
-            }
-
-        }
-
-        function printValue(){
-            var input = document.getElementById('price');
-            var price = input.value;
-
-            if(price.trim() == '' || price < 0){
-                alert('가격을 입력하세요.');
-
-                input.value = '';
-                input.focus();
-            } else {
-                document.getElementById('area').innerHTML += price + '원' + '<br>';
-
-                input.value = '';
-                input.focus();
-            }
-
-        }
-
-    </script> -->
+    <hr>
 
     <h2>문제 3. HTML 태그에 접근</h2>
     <p>
@@ -265,21 +199,39 @@
             console.log(inputList);
         이 스크립트 시트에서 배열에서는 input 태그가 또 있어서 배열에 [0]이면 자꾸만 컬러코드가 나왔던 것!!!!!!
         그래서 input[1]으로 하면 이름으로 잘 나온다.
+
         var name= document.getElementsByTagName('input')[1].value;
             console.log(name);
 
         var productName = document.getElementById('productName').value;
+        id 속성은 중복을 허용하지 않기 때문에 배열로 출력해볼 필요가 없다.
+
         var totalPrice = document.getLementsByName('totalPrice')[0].value;
+
         name 속성도 여러개가 있을 수 있기 때문에 배열에 담아 준다. 따라서 인덱스 확인해보고 세팅할 것 how? 디버깅해서 .value 찍어보면 된다.
 
         conle.log(name, productName, totalPrice);
 
         3. 출력할 문구 만들어볼까요
-            area.innerHTML = `${name}님 구매하신 상품명은 ${productName}, 구매가격은 ${totalPrice}원 입니다.`;
+            area.innerHTML = `${name}님이 구매하신 상품명은 ${productName}, 구매가격은 ${totalPrice}원 입니다.`;
     -->
 
     <!-- 
         <답안>
+        <script>
+            function inputOutput(){
+                var area = document.getElementById('area');
+                var name = document.getElementSByTagName('input')[1].value;
+                var productName = document.getElementById('productName').value;
+                var totalPirce = document.getElementsByName('price')[0].value;
+
+                console.log(name,productName, totalPirce);
+
+                area.innterHTML = `${name}님이 구매하신 상품명은 ${productName}, 구매가격은 ${totalPirce}원 입니다.`;
+
+            }
+        </script>
+
     -->
 
     <hr>
@@ -329,15 +281,15 @@
     
         3. 입력받은 행, 열 가지고 문자 데이터로 innterHTML에 대입해서 테이블을 만들자.
 
-        4. area3은 document로 안해도 왜 되는걸까? 브라우저가 코드 내용을 위->아래로 읽으며 실행시킬 때,
-        DOM(Documnet Object Model) 트리; 문서 구조대로 요소들을 객체들을 만들어 놓고(by 아이디를 가지고) 아이디 부여하는 시점에 아이디 속성에 따라 객체를 만든다.
-        window.객체명 을 통해서 접근할 수 있다. 그런데 중간에 - 있거나 하면 인식 안되기 때문에 지양하는 방법 
-        document.get~~ 방법을 이용할 것
+        4. area3은 document.get~ 으로 안해도 왜 되는걸까? 브라우저가 코드 내용을 위->아래로 읽으며 실행시킬 때,
+        DOM(Document Object Model) 트리; 문서 구조대로 요소들을 객체들을 만들어 놓고(by 아이디를 가지고) 
+        element가 DOM트리에 추가 될 때, 아이디 부여하는 시점에 아이디 속성에 따라 객체를 만든다.
+        그래서 document~를 사용하지 않아도 div를 가지고 사용할 수 있다. 
+        window.객체명 을 통해서 접근할 수도 있다. 그런데 중간에 - 있거나 하면 인식 안되기 때문에 지양하는 방법 
+        document.get~~ 방법을 이용할 해서 element를 사용할 것
 
         5. for문 중첩으로 바깥쪽 for문이 돌아갈 동안 행을, 안쪽 for문 돌아갈 동안 열을 만들어서 테이블 구조를 만든다.
         -->
-
-
 
 
 

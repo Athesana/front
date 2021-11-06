@@ -10,10 +10,19 @@ var str2 = 'var 전역변수';
     [onload] ***** 다시 정리!
     브라우저가 위->아래로 그릴 때 script를 만나면 포함시키면서 실행시킨다.
     head에 있으면 body를 그리기도 전에 스크립트 내용을 그려야 해서 오류가 난다.
+    그래서 보통 <script>를 <body>의 마지막에 기재를 하지만, 
+    script도 여러 개 일수도 있고 포함되는 순서에 따라서 동작이 안될수도 있고 하기 때문에
+    더욱 확실하게 하기 위해서 onload를 사용하는 것이다.
+
+    함수를 정의해서 onload에 담아놓고
+    <body> ~ </html> 끝나면 window.onload의 내용을 실행시킨다.
+    즉, html 문서 -> css 다 읽어서 화면을 그린 다음 onload의 내용을 실행시킨다.
+
     스타일 다 가져오고 나면 브라우저가 변수들을 알기 때문에 onload에 담겨 있던 변수들을 
-    load가 다 되고 나서 실행하도록 만드는 이벤트 핸들러
+    load가 다 되고 나서 실행하도록 만드는 이벤트 핸들러이다.
 */
-// 자바스크립트에서 페이지가 모두 로드되면 자동으로 실행되는 함수를 구현 할 때 사용한다.
+// window : 웹 브라우저 창에 대한 내용을 담고 있는 객체
+// onload : 이벤트 핸들러 , 자바스크립트에서 페이지가 모두 로드되면 자동으로 실행되는 함수를 구현 할 때 사용한다.
 // 사용자 입력하는 것 제외하고도 페이지에 대한 이벤트가 발생할 경우 이벤트 핸들러=함수를 등록해서 처리할 수 있다.
 window.onload = function(){
     var str1 = '지역변수1';
@@ -55,6 +64,7 @@ window.onload = function(){
     // console.log(num2);
 
     // let은 중복선언이 불가능하다.(SyntaxError: Identifier ~ has already beed declared 오류)
+    // var에 비해서 안정성이 있다.
 
     const num3 = 10;
     console.log(num3);
@@ -62,10 +72,11 @@ window.onload = function(){
     // const num3 = 20;
     // console.log(num3);
 
-    // const는 중복선언이 불가능하다.
+    // const는 중복선언이 불가능하다.(SyntaxError: Identifier ~ has already beed declared 오류)
+    // var에 비해서 안정성이 있다.
 
 
-    // num3 = 20; // 상수이기 때문에 값의 재할당이 불가능하다.
+    // num3 = 20; // (Assignment to constant variable.) 상수이기 때문에 값의 재할당이 불가능하다.
 
     console.log('-------------------------------------------------');
 
