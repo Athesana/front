@@ -89,6 +89,7 @@ function test5(){
     area.innerHTML += `arr의 자료형 : [${typeof(arr)}]<br><br>`;
     area.innerHTML += `arr.join() : [${arr.join('|')}]<br><br>`; // 값을 넘겨주면 구분자의 용도로 사용한다.
     area.innerHTML += `arr.join()의 자료형 : [${typeof(arr.join())}]<br><br>`;
+
 }
 
 
@@ -96,10 +97,11 @@ function test5(){
 function test6(){
     let arr = Array.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);  // ES6부터 추가된 배열 생성 메소드이다.
     let area = document.getElementById('area6');
-
+    
     area.innerHTML += `arr : [${arr}]<br><br>`;
     area.innerHTML += `arr.reverse() : [${arr.reverse()}]<br><br>`;  // 원본 배열에 영향을 미치는 메소드이다.
     area.innerHTML += `arr : [${arr}]<br><br>`;  // 원본 배열이 reverse() 되어있다.
+    console.log(arr);
 }
 
 

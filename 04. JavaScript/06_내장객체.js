@@ -55,7 +55,7 @@ btn2.addEventListener('click', () => {
     area.innerHTML += `num3의 값 : ${num3}, num3 instanceof Number : ${num3 instanceof Number}, typeof(num3) : ${typeof(num3)} <hr>`;
 
     // 지수 표기법으로 변경한 문자열을 리턴한다.
-    area.innerHTML += `num1.toExponential() : ${num1.toExponential()}, <br> typeof(num1.toExponential()) : ${typeof(num1.toExponential())} <br>`;
+    area.innerHTML += `num1.toExponential() : ${num1.toExponential()}, <br> typeof(num1.toExponential()) : ${typeof(num1.toExponential())} <hr>`;
 
     // 숫자를 반올림하여 문자열로 리턴한다.
     area.innerHTML += `num2.toFixed(2) : ${num2.toFixed(2)}, typeof(num2.toFixed(2) : ${typeof(num2.toFixed(2))})<br>`
@@ -76,11 +76,11 @@ btn3.addEventListener('click', () => {
     let area = document.getElementById('area2');
     let str1 = 'javascript';
     let str2 = new String('javascript');
-
+    
     console.log(str1);
     console.log(str2);
+    
     // 문자열을 태그로 감싸는 메소드
-
     area.innerHTML += `기본값 : ${str1}<br><br>`;
     area.innerHTML += `str1.bold() : ${str1.bold()}<br>`
     area.innerHTML += `str1.italics() : ${str1.italics()}<br>`
