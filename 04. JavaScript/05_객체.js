@@ -24,6 +24,7 @@ btn1.addEventListener('click', () => {
 
     area.innerHTML += `product : ${product} <br><br>`;
 
+    // "속성명", '속성명' 둘 다 가능, [] 대괄호 안에 문자열 형태로 속성을 주니까~
     area.innerHTML += '객체명 ["속성명"]으로 접근하는 방법<br>';
     // area.innerHTML += `product[0] : ${product['0']}`;
     area.innerHTML += `product[0] : ${product[0]} <br>`;
@@ -68,7 +69,7 @@ btn2.addEventListener('click', () => {
 });
 
 // 객체에 메소드를 속성으로 지정할 수 있는데 (왜냐 함수도 데이터 타입으로 사용할 수 있으니까 이때는 메소드라고 불리게 됨)
-// 객체 내부에 있는 메소드에서 속성에 접근하려면 this를 명시적으로 꼭 붙일 것! => 'this.속성명' 안 붙이면 백구 아니고 내 이름 나옴
+// 객체 내부에 있는 메소드에서 속성에 접근하려면 this를 명시적으로 꼭 붙일 것! => 'this.name'이라고 안하고 'name'이라고 하면 백구 아니고 내 이름 나옴
 
 
 // 객체와 반복문
@@ -132,3 +133,173 @@ btn4.addEventListener('click', () => {
 
 // 함수(메소드) 내부에서는 객체 자기자신의 속성한테 접근할 때는 this 를 사용합니다.
 // 메소드 일 때는 제외하고 다른 속성일 때만 하나의 문자열으로 만들어서 리턴해줘라~
+
+//객체 배열
+let btn5 = document.getElementById('btn5');
+
+btn5.addEventListener('click', () => {
+    let area = document.getElementById('area2');
+
+    // 배열을 사용하지 않았을 경우
+    let student1 = {name : '이산아', java : 100, oracle: 100};
+    let student2 = {name : '홍길동', java : 70, oracle: 600};
+    let student3 = {name : '백구', java : 80, oracle: 90};
+    let student4 = {name : '누렁이', java : 70, oracle: 80};
+    let student5 = {name : '이몽룡', java : 20, oracle: 20};
+
+    // console.log(student1);
+    // console.log(student2);
+    // console.log(student3);
+    // console.log(student4);
+    // console.log(student5);
+
+    // 배열 선언 및 초기화
+    let students = [
+        {name: '이산아', java: 100, oracle: 100},
+        {name: '홍길동', java: 70, oracle: 60}
+
+    ];
+
+    // 배열에 요소 추가
+
+    students.push({name : '백구', java : 80, oracle: 90});
+    students.push(student4);
+    students.push(student5);
+    
+    // 배열에 담겨있는 모든 객체에 메소드를 추가(메소드 입장에서는 객체의 속성에 접근하는거기 때문에 this를 붙여야 한다.)
+    for (let i = 0; i < students.length; i++) {
+        students[i].getSum = function(){
+            return this.java + this.oracle;
+        };
+
+        students[i].getAvg = function(){
+            return this.getSum() / 2;
+        };
+    }
+
+    console.log(students);
+
+    // 모든 학생의 정보가 담긴 배열을 출력해보자 (이름, 총점, 평균)
+    for (const index in students) {
+        with(students[index]){
+            area.innerHTML += `이름 : ${name}, 총점 : ${getSum()}, 평균 : ${getAvg()} <br><br>`;
+            // with 구문 삭제하면 밑에 처럼 이렇게 써야 된다.
+            // area.innerHTML += `이름 : ${student[index].name}, 총점 : ${student[index].getSum()}, 평균 : ${student[index].getAvg()} <br><br>`; 
+        }
+            
+        // console.log(this);  여기에서 this는 윈도우를 가르킨다.
+    }
+    
+
+});
+
+
+// 생성자 함수
+
+function Student(name, java, oracle) {
+    // 속성 정의
+    this.name = name;
+    this.java = java;
+    this.oracle = oracle;
+
+    // // 메소드 정의 (메소드 역시 속성이다.)
+    // this.getSum = function(){
+    //     return this.java + this.oracle;
+    // };
+
+    // this.getAvg = function(){
+    //     return this.getSum() / 2;
+    // }
+}
+
+Student.prototype.getSum = function(){
+        return this.java + this.oracle;
+    };
+
+Student.prototype.getAvg = function(){
+    return this.getSum() / 2;
+};
+
+
+/*
+    자바 스크립트는 프로토타입 기반의 객체 지향 언어이다. 
+    모든 자바스크립트 객체는 하나의 프로토타입을 상속받을 수 있고, 참조하고 있으며 상위 프로토타입을 가질 수 있다. (프로토타입 체이닝)
+    프로토타입은 최종적으로 또 오브젝트 객체를 참조한다.
+    중복되는 메소드는 프로토타입 객체로 선언해서 가질 수 있게한다.
+    프로토타입은 상위객체 역할을 하고 공유되는 메소드와 속성이 있으면 등록해놓으면 된다.
+    특정 생성자로 만드는 함수는 그것으로 만든 생성자에 해당하는 프로토타입 객체를 상속하고 있고, 또 다른 오브젝트의 프로토타입 객체를 참조하는 구조를 가진다.
+    공통적으로 사용하는 함수(메소드)를 프로토타입 객체에 추가시켜서 공유하도록 사용하면, 객체를 만들 때마다 함수들이 추가될 일이 없다.
+    따라서 불필요한 중복을 제거할 수 있다. 
+*/
+
+let btn6 = document.getElementById('btn6');
+
+btn6.addEventListener('click', () => {
+
+    let area = document.getElementById('area3');
+    let student = new Student('이산아', 80, 80);
+    let students = [];
+
+    students.push(student);
+    students.push(new Student('차은우', 100, 100));
+    students.push(new Student('김준수', 100, 100));
+    students.push(new Student('이몽룡', 40, 40));
+
+    // 생성자 함수로 만들어진 객체의 경우 해당 객체가 어떤 생성자 함수로 생성되었는지 instanceof 연산자로 검사할 수 있다.
+    console.log(student instanceof Student);
+    console.log(students instanceof Student);
+
+    // 모든 학생의 정보가 담긴 배열을 출력해보자. (이름, 총점, 평균)
+    for (const index in students) {
+        area.innerHTML +=  `이름 : ${students[index].name}, 총점 : ${students[index].getSum()}, 평균 : ${students[index].getAvg()} <br><br>` 
+        
+    }
+
+});
+
+// 캡슐화
+
+// 먼저 생성자 함수를 만들자
+function IdolGroup(n, m){
+    let name = n;
+    let members = m;
+
+    // 객체 소멸시까지 let 변수들은 사라지지 않는다. (객체마다 name, members를 참조하고 있기 때문에)
+
+    this.getGroupName = function(){
+        return name;
+    }
+
+    this.getMembers = function(){
+        return members;
+    }
+
+    this.getMemberCount = function(){
+        return members.length;
+    }
+
+    this.setGroupName = function(n){
+        name = n;
+    }
+
+    this.setMembers = function(m){
+        members = m;
+    }
+}
+
+let btn7 = document.getElementById('btn7');
+
+btn7.addEventListener('click', () => {
+    // 생성자 함수를 이용하여 객체 생성
+    let bts = new IdolGroup('방탄소년단', ['지민', '뷔', '정국', 'RM', '슈가', '진', '제이홉']);
+    let area = document.getElementById('area4');
+
+    // console.log(bts);
+    // console.log(bts.name, bts.members); // undefined 지역 변수로 만들었기 때문에 속성이 아니다! 그래서 정의가 안되서 에러 발생
+    console.log(bts.getGroupName(), bts.getMembers(), bts.getMemberCount());
+    
+    bts.setGroupName('에스파');
+    bts.setMembers(['카리나', '지젤', '윈터', '닝닝']);
+
+    area.innerHTML += `그룹명 : ${bts.getGroupName()}, 멤버 : ${bts.getMembers()}, 멤버 수 : ${bts.getMemberCount()} <br><br>` 
+});

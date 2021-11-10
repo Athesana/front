@@ -77,7 +77,7 @@ function sum(){
 
 // 3) 매개변수에 this 요소 전달하기
 function thisTest(element){
-    console.log(this);  // 페이지 내에서 생성된 함수나 전역변수는 윈도우 안에 포함된다. 따라서 함수에서 사용하는 this는 윈도우 객체를 가르킨다.
+    console.log(this);  // 페이지 내에서 생성된 함수나 전역변수는 윈도우 안에 포함된다. 따라서 함수에서 사용하는 여기에서 this는 윈도우 객체를 가르킨다.
     console.log(element); // 이벤트가 발생했을 때의 이벤트가 발생한 요소
 }
 
