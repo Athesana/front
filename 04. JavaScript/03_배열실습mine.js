@@ -1,3 +1,4 @@
+// 1번
 function test1(){
     let text1 = document.getElementById('text').value;
     let la1 = document.getElementById('la1').textContent;
@@ -22,7 +23,7 @@ function test1(){
     }
 };
 
-
+// 2번
 function test2(){
     let stringla1 = document.getElementById('stringla1').textContent;
     let stringla2 = document.getElementById('stringla2').textContent;
@@ -56,4 +57,53 @@ function test2(){
     p1.innerHTML = `정답 : "${result.join("")}"`;
 
 
-}
+};
+
+// 3번
+let strInputList = new Array();
+
+function input(){
+    
+    let strInput = document.getElementById('strInput');
+    
+    strInputList.push(strInput.value);
+    
+    strInput.value = '';
+    
+    console.log(strInputList);
+};
+
+function test3(){
+    let p2 = document.getElementById('p2');
+    p2.innerHTML = `출력 : "${strInputList.sort().reverse()}"`;
+
+};
+
+
+// 4번
+function test4(){
+    let stringla4 = document.getElementById('stringla4').innerHTML;
+    console.log(stringla4);
+    let la4List = stringla4.split(' ');
+    console.log(la4List);
+    
+    let remove = document.getElementById('remove').value;
+    let add = document.getElementById('add').value;
+
+    // let d = la4List.indexOf(remove);
+    // let p = la4List.indexOf(add);
+
+    // console.log(la4List[2]); // 당근
+
+    for(let i = 0; i < la4List.length; i++){
+        if (la4List[i] === remove){
+            la4List.splice(i,1);
+
+            break;
+        }
+    }
+        la4List.push(add);
+
+    p3.innerHTML = `결과-> ${la4List.join(' ')}`;
+    // document.getElementById('p3').innerHTML = la4List.join(' ');
+};
