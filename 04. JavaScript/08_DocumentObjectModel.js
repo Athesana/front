@@ -15,3 +15,38 @@ btn1.addEventListener('click', () => {
 
     // document.getElementById('area1').innerHTML += '<h3>안녕하세요</h3>'; // 이렇게 작성하는 것과 같음
 });
+
+
+// 텍스트 노드가 없는 요소 노드 생성
+let btn2 = document.getElementById('btn2');
+btn2.addEventListener('click', () => {
+    // element 생성
+    let img = document.createElement('img');
+
+    // 속성 지정
+    img.src = '../resources/image/flower1.PNG';
+    img.setAttribute('width', '150px');
+    img.setAttribute('height', '100px');  // 이 때, value도 string 타입이다.
+    // img.setAttribute('myAttr', 'P123');
+
+    document.getElementById('area2').appendChild(img);
+    document.getElementById('area2').innerHTML += 
+        '<img src="../resources/image/flower2.PNG" width="150px" height="100px" myAttr="P123">';
+}); 
+
+
+// Node 객체 삭제
+let btn3 = document.getElementById('btn3');
+
+btn3.addEventListener('click', (event) => {
+    // 1. document 직접 불러와서 지우기
+    document.getElementById('area1').remove();
+
+    // 2. 바디 태그 자식 요소 중에서 지우기 (removeChild(지우고 싶은 객체를 넘겨준다.))
+    document.body.removeChild(document.getElementById('area2'));
+
+    // 3. 버튼의 상위 노드한테 자식 노드를 지우라고 하기, 타겟은 버튼3
+    // 제거할 객체를 기준으로 그 상위 객체로 가서 해당 객체를 삭제
+    event.target.parentNode.removeChild(document.getElementById('area3'));
+
+});
