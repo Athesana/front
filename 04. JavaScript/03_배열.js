@@ -186,3 +186,33 @@ function test10(){
     // 원하는 위치에 deleteCount 를 0으로 하면 추가값이 삽입되고 하나씩 밀린다.
     area.innerHTML += `arr : [${arr}]<br><br>`; // 원본 배열에 영향을 미치는 메소드이다.
 }
+
+//* reduce()
+
+class Student{
+    constructor(name, age, enrolled, score) {
+    this.name = name;
+    this.age = age;
+    this.enrolled = enrolled;
+    this.score = score;
+    }
+};
+
+let students = [
+    new Student('A', 29, true, 45),
+    new Student('B', 28, false, 80),
+    new Student('C', 30, true, 90),
+    new Student('D', 40, false, 66),
+    new Student('E', 18, true, 88)
+];
+
+{
+    const result = students.reduce((prev, curr) => {
+        console.log('------------------');
+        console.log(prev);
+        console.log(curr);
+        return prev + curr.score;
+    }, 0);
+    //const result = students.reduce((prev, curr) => prev + curr.score, 0); 과 같다.
+    console.log(result / students.length);
+};
