@@ -1,10 +1,18 @@
 // 객체 선언
 
+// 자바 스크립트에서 객체 만드는 방법 여러 개 중 - 01. 객체 리터럴을 사용하는 방법 (02. 생성자 함수 03. Object 생성자 함수 04. 클래스로 생성)
+
 let btn1 = document.getElementById('btn1');
 
 btn1.addEventListener('click', () => {
     let area = document.getElementById('area1');
 
+    // product라는 객체를 만들어 보자. {} 내에 0개 이상의 속성을 지정하면된다. 할당하는 시점에 객체 리터럴을 보고 객체를 생성한다.
+    /*
+        속성을 여러 개를 적을 때는 , 로 구분한다. 키는 항상 문자열이고 어떤 조건을 만족하면 ,를 생략할 수 있다. 
+        키 값에 문자열이 아닌 숫자형태로 넣을 수도 있는데 실제로는 문자열처럼 변환되어진다.
+        값에 숫자를 적어도 실제로는 문자 형태로 저장된다.
+    */
     let product = {
         0: '배열 흉내',
         pName: '아이폰 12 미니',
@@ -25,7 +33,7 @@ btn1.addEventListener('click', () => {
     area.innerHTML += `product : ${product} <br><br>`;
 
     // "속성명", '속성명' 둘 다 가능, [] 대괄호 안에 문자열 형태로 속성을 주니까~
-    area.innerHTML += '객체명 ["속성명"]으로 접근하는 방법<br>';
+    area.innerHTML += '1. 객체명 ["속성명"]으로 접근하는 방법<br>';
     // area.innerHTML += `product[0] : ${product['0']}`;
     area.innerHTML += `product[0] : ${product[0]} <br>`;
     area.innerHTML += `product['pName'] : ${product['pName']} <br>`;
@@ -34,8 +42,9 @@ btn1.addEventListener('click', () => {
     area.innerHTML += `product['spec'][0] : ${product['spec'][0]} <br>`;
     area.innerHTML += `product['spec'][1] : ${product['spec'][1]} <hr>`;
 
-    area.innerHTML += '객체명.속성명 으로 접근하는 방법<br>';
+    area.innerHTML += '2. 객체명.속성명 으로 접근하는 방법<br>';
     // area.innerHTML +=  `product.0 : ${product.0}`; 에러 발생
+    // area.innerHTML +=  `product.0 : ${product.'0'}`; 에러 발생
     area.innerHTML +=  `product.pName : ${product.pName}<br>`;
     area.innerHTML +=  `product.price : ${product.price}<br>`;
     area.innerHTML +=  `product.brand : ${product.brand}<br>`;
@@ -44,7 +53,8 @@ btn1.addEventListener('click', () => {
 
     // 공백이나 특수문자가 속성명에 포함되어 있는 경우 대괄호를 이용해서 값을 가져올 수 있다.
     // area.innerHTML += `user.user name : ${user."user name"}` 에러 발생
-    area.innerHTML += `user['user name'] : ${user["user name"]}<br>`
+    // area.innerHTML += `user.user name : ${user.user name}` 에러 발생
+    area.innerHTML += `user["user name"] : ${user["user name"]}<br>`
     area.innerHTML += `user['age!!'] : ${user['age!!']}<br>`
 
 });
@@ -59,17 +69,19 @@ btn2.addEventListener('click', () => {
         name: '백구',
         kind: '진돗개',
         eat: function(food){
+            // 여기는 객체 내부에 있는 메소드, 여기에서 객체의 속성에 접근하려면 this를 사용해야 한다.
             console.log(this.name);
             console.log(`${this.kind} 종류인 ${this.name}가 ${food}을 먹고 있네요~!`);
             console.log(food);
         }
     };
 
-    puppy.eat('닭가슴살');
+    puppy.eat('닭가슴살');  // 메소드를 호출하는 부분
 });
 
 // 객체에 메소드를 속성으로 지정할 수 있는데 (왜냐 함수도 데이터 타입으로 사용할 수 있으니까 이때는 메소드라고 불리게 됨)
 // 객체 내부에 있는 메소드에서 속성에 접근하려면 this를 명시적으로 꼭 붙일 것! => 'this.name'이라고 안하고 'name'이라고 하면 백구 아니고 내 이름 나옴
+// 동일한 이름의 변수가 있으면 내가 원하는 대로 동작하지 않을 수 있기 때문에 this를 붙일지 말지 잘 확인할 것
 
 
 // 객체와 반복문
@@ -97,7 +109,7 @@ let btn4 = document.getElementById('btn4');
 
 btn4.addEventListener('click', () => {
 
-    // 빈 객체 선언
+    // 빈 객체 선언 (객체 안에 name, age, job, whoAreYou 포함하게 됨)
     let student = {};
 
     // 객체에 속성 추가
@@ -106,10 +118,11 @@ btn4.addEventListener('click', () => {
     student['job'] = '의적';
 
     // 객체에 메소드 추가
+    // function() 이라고 적은 것은 객체의 메소드를 가르킬 때는 화살표 함수 사용하지 말기 why? window 객체를 가르키기 때문이다.
     student.whoAreYou = function() {
         let str = '';
 
-        for (const key in this) {
+        for (const key in this) {  // this는 student 객체 자기 자신
             // if(key !== 'whoAreYou'){
             if(typeof(this[key]) !== 'function'){
                 str += `${key} : ${this[key]} `; 

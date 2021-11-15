@@ -32,7 +32,7 @@ let btn2 = document.getElementById('btn2');
 
 btn2.addEventListener('click', (e) => {
     console.log(this);  // 윈도우 객체를 찍어준다.
-    console.log(e.target);
+    console.log(e.target);  // btn2를 가져오고 싶을 때, 매개값을 주고, 그것의 target을 찾아보면 된다.
 
     argTest();
     // argTest('안녕하세요.');
@@ -110,7 +110,8 @@ btn4.addEventListener('click', () => {
 function returnTest2(){
 
     // [클로저]
-    // - 내부 함수가 사용하는 외부 함수의 지역변수는 내부 함수가 소멸 할 때까지 소멸되지 않는 특성을 말한다.
+    // - 내부 함수가 사용하는 외부 함수의 지역변수는 내부 함수가 소멸 할 때까지 소멸되지 않는 특성(메커니즘)을 말한다.
+    // 원래는 위에 함수에서 returnTest()(); 하면서 이 함수를 호출하면 지역변수인 userName은 소멸이 되어야 하는데 여전히 사용할 수 있는 이유는 클로저 특성 때문이다.
 
     let userName = document.getElementById('userName').value;
 
@@ -128,5 +129,5 @@ btn5.addEventListener('click', () => {
     let calc = document.getElementById('calc');
 
     p2.innerHTML += `실제 입력된 값 : ${calc.value} <br>`
-    p2.innerHTML += `val() 후 : ${eval(calc.value)} <br>`
+    p2.innerHTML += `eval() 후 : ${eval(calc.value)} <br>`
 });
