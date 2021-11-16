@@ -44,11 +44,15 @@
             - 자바스크립트에서 해당 내용은 "window.onload = function(){실행내용};" 과 같이 작성한다. <br>
                 해당 문서에서 한 번만 작성이 가능하다. 여러 번 작성할 경우(복수 개 설정)는 가장 마지막에 작성된 내용이 적용된다. <br>
             - jQuery에서는 "$(document객체).ready(function() {실행 내용});" 과 같이 작성한다.<br>
-                해당 문서에서 여러 번 작성 가능하다. (but, 한 번만 사용하는 것을 지향한다.)
+                해당 문서에서 여러 번 작성 가능하다. (but, 한 번만 사용하는 것을 지향한다.)<br><br>
 
         2. jQuery에서의 onload를 의미하는 구문(3가지 방법)<br>
+            <!-- {실행내용}은 문서의 DOM이 다 load되고 나서 실행되는 내용임 -->
+
             - $(document객체).ready(function() {실행 내용}); <br>
+            <!--jQuery라는 변수를 활용한다. -->
             - jQuery(document).ready(function() {실행 내용}); <br>
+            <!-- 축약형 -->
             - $(function() {실행 내용}); <br><br>
 
         3. jQuery 기본 작성 형태<br>
@@ -65,6 +69,8 @@
             console.log('window.onload2');
         };
 
+        // 여러 개 사용해봤자 마지막에 사용한 window.onload2가 출력된다.
+
         // jQuery 방식
         // 일반적으로 가장 많이 사용한다.
         $(document).ready(() => {
@@ -80,17 +86,23 @@
         $(() => {
             console.log('$(document).ready(...) 3');
 
-            // p 태그로 만들어진 요소들을 선택해서 글자색을 바꿔보자!
-            // $('p').css('color', 'red');
+            // p 태그로 만들어진 요소들을 선택해서 글자색을 빨간색으로 바꿔보자!
+            $('p').css('color', 'red');
 
-            let tags = document.getElementsByTagName('p'); // 배열 형식으로 반환
+            //자바 스크립트 방식으로 p 요소들을 선택해서 글자색을 빨간색으로 바꾸기
 
-            for (const index in tags) {
-                tags[index].style.color = 'red';    
-            }
+            // let tags = document.getElementsByTagName('p'); // 배열 형식으로 반환
+
+            // for (const index in tags) {
+            //     tags[index].style.color = 'red';    
+            // }
 
         });
 
+        // $(document).ready(...) 1
+        // $(document).ready(...) 2
+        // $(document).ready(...) 3
+        // 콘솔에 모두 출력된다.
 
     </script>
 

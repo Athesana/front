@@ -27,7 +27,7 @@ btn2.addEventListener('click', () => {
     img.src = '../resources/image/flower1.PNG';
     img.setAttribute('width', '150px');
     img.setAttribute('height', '100px');  // 이 때, value도 string 타입이다.
-    // img.setAttribute('myAttr', 'P123');
+    // img.setAttribute('myAttr', 'P123'); // 그냥 사용자가 필요한 속성 아무렇게나 지정해서도 가능
 
     document.getElementById('area2').appendChild(img);
     document.getElementById('area2').innerHTML += 
@@ -39,13 +39,14 @@ btn2.addEventListener('click', () => {
 let btn3 = document.getElementById('btn3');
 
 btn3.addEventListener('click', (event) => {
-    // 1. document 직접 불러와서 지우기
+    // 1. document 직접 불러와서 지우기, remove() 메소드 사용
     document.getElementById('area1').remove();
 
-    // 2. 바디 태그 자식 요소 중에서 지우기 (removeChild(지우고 싶은 객체를 넘겨준다.))
+    // 2. 바디 태그 자식 요소 중에서 지우기 (removeChild(지우고 싶은 객체를 넘겨준다. 노드 객체를 전달))
     document.body.removeChild(document.getElementById('area2'));
 
-    // 3. 버튼의 상위 노드한테 자식 노드를 지우라고 하기, 타겟은 버튼3
+    // 3. 버튼의 상위 노드한테 자식 노드를 지우라고 하기, 이벤트가 발생한 객체 정보 = 타겟은 버튼3, 버튼의 부모는 body
+    // 부모인 body한테 너 자식 중에 있는 area3 없애고 싶어.
     // 제거할 객체를 기준으로 그 상위 객체로 가서 해당 객체를 삭제
     event.target.parentNode.removeChild(document.getElementById('area3'));
 

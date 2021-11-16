@@ -5,6 +5,7 @@ btn1.addEventListener('click', () => {
     // window.open('http://www.naver.com');
     // window.open('http://www.naver.com', 'naver'); // 창 이름이 같은 경우 새 창을 띄우는 것이 아니라 같은 창에서 다른 페이지로 랜딩
 
+    // 새 창을 내가 원하는 크기로 띄워준다. 
     // 특성의 경우 브라우저마다 다르게 동작하기 때문에 정상적으로 동작하는지 꼭 확인할 것!
     window.open('http://www.naver.com', 'naver', 'width=500', 'height=600', 'resizeable=no');
 
@@ -23,11 +24,15 @@ btn2.addEventListener('click', () => {
 
     // 일정 시간 후에 콜백함수를 한 번 실행
     // setTimeout은 밀리초 단위로 작성한다. 생략하면 0으로 사용된다.
+    // 위에 alert에서 확인 누르면 3초 뒤에 페이지가 닫힘.
+    // 한 번만 실행된다.
+
+    // timeout 세팅이 완료되면 timerid를 준다.
     timerId = window.setTimeout(() => {
                 newWindow.close()
             }, 3000);
 
-    console.log(timerId);
+    console.log(timerId);  // timeid가 1부터 ~ 출력
 
     // 타이머 id를 전달하면 해당 id의 타이머를 취소할 수 있다. 윈도우 창이 닫히지 않는다. 
     // clearTimeout(timerId);
@@ -41,7 +46,7 @@ let btnStop = document.getElementById('btnStop');
 btnStart.addEventListener('click', () => {
     let area = document.getElementById('area1');
     
-    // 일정 시간(1초)마다 콜백 함수를 반복 실행
+    // 일정 시간(1초)마다 콜백 함수를 반복 실행하며 date 객체를 만든다.
     timerId = window.setInterval(() => {
         let date = new Date();
         
@@ -58,7 +63,7 @@ btnStop.addEventListener('click', () => {
     console.log(timerId);
 
     window.clearInterval(timerId);
-    area.innerHTML = '';
+    area.innerHTML = '';  // 이 코드를 적으면 종료 버튼 누르면 인터벌 멈추면서 area가 백지로 비워준다.
 })
 
 

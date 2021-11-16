@@ -4,26 +4,26 @@ let btn1 = document.getElementById('btn1');
 
 btn1.addEventListener('click', () => {
     // Object 객체 생성하는 방법
-    let obj1 = {};
-    let obj2 = new Object();
+    let obj1 = {};   // 리터럴 형태로 만드는객체
+    let obj2 = new Object();  // Object 생성자 함수로 만드는 객체
     let obj3 = {name: '홍길동', height: 165};
 
     console.log(obj1);
     console.log(obj2);
 
     console.log('---------------------------------------')
-    console.log(obj1 instanceof Object);
-    console.log(obj2 instanceof Object);
+    console.log(obj1 instanceof Object);  // true
+    console.log(obj2 instanceof Object);  // true 
 
     // 매개값으로 전달되는 속성을 가지고 있는지 확인하는 메소드로 true, false를 리턴한다.
     console.log('---------------------------------------')
-    console.log(obj3.hasOwnProperty('name'));
-    console.log(obj3.hasOwnProperty('height'));
-    console.log(obj3.hasOwnProperty('weight'));
+    console.log(obj3.hasOwnProperty('name'));  // true
+    console.log(obj3.hasOwnProperty('height'));  // true
+    console.log(obj3.hasOwnProperty('weight'));  // false
 
     // for in 반복문을 통해서 속성에 접근이 가능하고 나열이 가능한지 여부
     console.log('---------------------------------------')
-    console.log(obj3.propertyIsEnumerable('name'));
+    console.log(obj3.propertyIsEnumerable('name'));  // true
 
     for(const key in obj3){
         console.log(`key : ${key}, value : ${obj3[key]}`);
@@ -59,7 +59,7 @@ btn2.addEventListener('click', () => {
 
     // 숫자를 반올림하여 문자열로 리턴한다.
     area.innerHTML += `num2.toFixed(2) : ${num2.toFixed(2)}, typeof(num2.toFixed(2) : ${typeof(num2.toFixed(2))})<br>`
-    area.innerHTML += `num2.toFixed(2) : ${num2.toFixed()}<hr>`;
+    area.innerHTML += `num2.toFixed(2) : ${num2.toFixed()}<hr>`; // 매개값 주지 않으면 소수점 기준으로 반올림해서 정수만 나온다.
 
     // 매개값으로 전달받은 자리수까지 유효하도록 나머지 자리수를 반올림하여 문자열로 리턴한다.
     area.innerHTML += `num3.toPrecision() : ${num3.toPrecision()}, typeof(num3.toPrecision()) : ${typeof(num3.toPrecision())}<br>`;
@@ -74,8 +74,8 @@ let btn3 = document.getElementById('btn3');
 
 btn3.addEventListener('click', () => {
     let area = document.getElementById('area2');
-    let str1 = 'javascript';
-    let str2 = new String('javascript');
+    let str1 = 'javascript';  // 문자열
+    let str2 = new String('javascript');  // String 객체, 글자 하나하나가 배열 index[0]~ 부터 담긴다.
     
     console.log(str1);
     console.log(str2);
@@ -93,8 +93,10 @@ btn3.addEventListener('click', () => {
 let btn4 = document.getElementById('btn4');
 btn4.addEventListener('click', () => {
     let area = document.getElementById('area3');
+
+    // Date 객체를 생성하는 방법
     let date1 = new Date();
-    let date2 = new Date(1636591301452); // 밀리세컨 단위로 날짜를 표시해준다. 1970년 1월 1일 00시 기준으로 매개값으로 전달한 밀리초 단위로 계산한다. 내부 값을 갖고 출력은 날짜 시간 정보로 출력됨
+    let date2 = new Date(1636591301452); // 밀리세컨 단위로 날짜를 표시해준다. 1970년 1월 1일 00시 기준으로 매개값 (= 1)으로 전달한 밀리초 단위로 계산한다. 내부 값을 갖고 출력은 날짜 시간 정보로 출력됨
     let date3 = new Date('2021/11/11/09:28:00'); // 날짜와 시간 정보를 문자열로 전달 시 -> 지정된 날짜와 시간을 받는 date 객체 생성, 해석 가능한 형식으로 작성할 것
     let date4 = new Date(2021, 10, 11, 9, 31, 59); // 월은 0부터 시작이라서 출력하고 싶은 월-1 해야함.
 

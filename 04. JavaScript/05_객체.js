@@ -196,6 +196,10 @@ btn5.addEventListener('click', () => {
     for (const index in students) {
         with(students[index]){
             area.innerHTML += `이름 : ${name}, 총점 : ${getSum()}, 평균 : ${getAvg()} <br><br>`;
+            // with를 쓰면 students[index].name~ 처럼 쓰지 않고 다음처럼 호출할 수 있다. 
+            // name();
+            // getAvg();
+
             // with 구문 삭제하면 밑에 처럼 이렇게 써야 된다.
             // area.innerHTML += `이름 : ${student[index].name}, 총점 : ${student[index].getSum()}, 평균 : ${student[index].getAvg()} <br><br>`; 
         }
@@ -216,6 +220,7 @@ function Student(name, java, oracle) {
     this.oracle = oracle;
 
     // // 메소드 정의 (메소드 역시 속성이다.)
+    // 생성자 함수에 메소드 정의하면 객체 만들때마다 중복 생성된다.
     // this.getSum = function(){
     //     return this.java + this.oracle;
     // };
@@ -240,9 +245,18 @@ Student.prototype.getAvg = function(){
     프로토타입은 최종적으로 또 오브젝트 객체를 참조한다.
     중복되는 메소드는 프로토타입 객체로 선언해서 가질 수 있게한다.
     프로토타입은 상위객체 역할을 하고 공유되는 메소드와 속성이 있으면 등록해놓으면 된다.
+    프로토타입을 참조하는 상속받은 객체들은 상위에 있는 프로토타입에 있는 메소드와 속성을 자신의 메소드인 것 처럼 자유롭게 사용할 수 있다.
+    여기에서도 없으면 Object로 거슬러 올라감
     특정 생성자로 만드는 함수는 그것으로 만든 생성자에 해당하는 프로토타입 객체를 상속하고 있고, 또 다른 오브젝트의 프로토타입 객체를 참조하는 구조를 가진다.
     공통적으로 사용하는 함수(메소드)를 프로토타입 객체에 추가시켜서 공유하도록 사용하면, 객체를 만들 때마다 함수들이 추가될 일이 없다.
-    따라서 불필요한 중복을 제거할 수 있다. 
+    따라서 불필요한 중복을 제거할 수 있다.
+    
+    ++
+    생성자 함수로 만들어진 객체는 자동으로 프로토타입 객체가 만들어진다. (기본으로 주요 메소드들이 포함되어 있음)
+    공통적으로 쓰는 함수(메소드)들은 프로토타입 객체 안의 멤버로 만들어준다.
+    자바스크립트에서 객체를 만들 때, 객체 자신의 상태(특성)를 나타내는 속성은 생성자 함수에 만들고,
+    공통적으로 사용되는 메소드 들은 프로토타입에 정의해서 공유해서 사용할 수 있도록 한다.
+    모든 자바스크립트 객체는 하나의 프로토타입과 연결되어 있고, 필요에 따라 또 다른 프로토타입을 참조하고 있다. (프로토타입 체이닝)
 */
 
 let btn6 = document.getElementById('btn6');
@@ -259,8 +273,8 @@ btn6.addEventListener('click', () => {
     students.push(new Student('이몽룡', 40, 40));
 
     // 생성자 함수로 만들어진 객체의 경우 해당 객체가 어떤 생성자 함수로 생성되었는지 instanceof 연산자로 검사할 수 있다.
-    console.log(student instanceof Student);
-    console.log(students instanceof Student);
+    console.log(student instanceof Student);  // true
+    console.log(students instanceof Student);  // false
 
     // 모든 학생의 정보가 담긴 배열을 출력해보자. (이름, 총점, 평균)
     for (const index in students) {
@@ -279,6 +293,7 @@ function IdolGroup(n, m){
 
     // 객체 소멸시까지 let 변수들은 사라지지 않는다. (객체마다 name, members를 참조하고 있기 때문에)
 
+    // 모든 객체마다 아래의 메소드들이 생성이 된다.
     this.getGroupName = function(){
         return name;
     }
@@ -307,9 +322,9 @@ btn7.addEventListener('click', () => {
     let bts = new IdolGroup('방탄소년단', ['지민', '뷔', '정국', 'RM', '슈가', '진', '제이홉']);
     let area = document.getElementById('area4');
 
-    // console.log(bts);
-    // console.log(bts.name, bts.members); // undefined 지역 변수로 만들었기 때문에 속성이 아니다! 그래서 정의가 안되서 에러 발생
-    console.log(bts.getGroupName(), bts.getMembers(), bts.getMemberCount());
+    // console.log(bts); // let bts하고 콘솔 찍으면 메소드만 보이지 지역변수 2개는 안 보이는 상태
+    // console.log(bts.name, bts.members); // 개체의 속성에 직접 접근하는 방법. undefined. 지역 변수로 만들었기 때문에 속성이 아니다! 그래서 정의가 안되서 에러 발생
+    console.log(bts.getGroupName(), bts.getMembers(), bts.getMemberCount()); // 방탄소년단, [~], 7
     
     bts.setGroupName('에스파');
     bts.setMembers(['카리나', '지젤', '윈터', '닝닝']);

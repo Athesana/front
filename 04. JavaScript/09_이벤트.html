@@ -37,6 +37,7 @@
 
     <button id="btn3">실행 확인</button>
 
+    <hr>
 
     <h2>이벤트가 발생한 해당 요소 객체에 접근하는 방법</h2>
     <p>
@@ -62,6 +63,8 @@
     <a href="http://www.naver.com" onclick="alert('네이버 바로 가기 클릭~~');">네이버로 바로가기</a>
     <a href="http://www.naver.com" onclick="return false;">네이버로 바로가기</a>
 
+
+    <!-- 유효성 체크 -->
     <h3>기본 이벤트 제거 1</h3>
     <form onsubmit="return test3();">
         <label>비밀 번호 : <input type="password" name="pass1" id="pass1"></label><br>
@@ -69,6 +72,7 @@
 
         <hr>
 
+        <!-- 1) 기본 이벤트 제거 -->
         <!-- <input type="submit" onclick="return test3();" value="제출"> -->
         <input type="submit" value="제출"> <!-- form에 return 기입하고 나서 -->
     </form>
