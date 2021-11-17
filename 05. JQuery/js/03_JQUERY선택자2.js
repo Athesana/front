@@ -7,7 +7,7 @@ $(document).ready(() => {
 
     //  2) 후손 선택자 : 부모 후손
     $('div h3').css('backgroundColor', 'skyblue');
-    $('div .test').css('backgroundColor', 'tomato');
+    $('div .test').css('background', 'tomato');
 
     // 2. 기본 속성 선택자
     // $('input[class]').css('background-color', 'tomato');

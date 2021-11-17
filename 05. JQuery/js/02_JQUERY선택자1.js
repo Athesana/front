@@ -48,4 +48,14 @@ $(document).ready(function(){
     // 2) jQuery를 활용한 방식
     $('.item').css('color', 'yellow');
 
+
+    let button = document.getElementById('btn');
+    button.addEventListener('click', function(){
+        button.innerHTML = '클릭 후';
+        // button.innerText = '클릭 후';
+        // $("#btn").text('클릭 후');
+        button.style.color ='red'; 
+    });
+
+
 });

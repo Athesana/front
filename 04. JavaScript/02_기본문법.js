@@ -150,7 +150,7 @@ function typeTest(){
 }
 
 function opTest(){
-    let num1 = 10 / 0; // Infinity = 양의 무한대, -Infinity = 의 무한대, 인피니티도 숫자를 표현하는 값 중의 하나
+    let num1 = -10 / 0; // Infinity = 양의 무한대, -Infinity = 의 무한대, 인피니티도 숫자를 표현하는 값 중의 하나
     let num2 = 10 / 'a'; // NaN : 산술 연산이 불가능
     let area = document.getElementById('area2');
 

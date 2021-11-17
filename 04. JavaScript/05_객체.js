@@ -272,7 +272,11 @@ btn6.addEventListener('click', () => {
     students.push(new Student('김준수', 100, 100));
     students.push(new Student('이몽룡', 40, 40));
 
-    // 생성자 함수로 만들어진 객체의 경우 해당 객체가 어떤 생성자 함수로 생성되었는지 instanceof 연산자로 검사할 수 있다.
+    /*
+    생성자 함수로 만들어진 객체의 경우 해당 객체가 어떤 생성자 함수로 생성되었는지 instanceof 연산자로 검사할 수 있다. 
+    instanceof 연산자는 object의 프로토타입 체인에 constructor.prototype이 존재하는지를 판별하여 true, false인 boolean 값으로 리턴한다.
+    */
+
     console.log(student instanceof Student);  // true
     console.log(students instanceof Student);  // false
 
