@@ -131,4 +131,16 @@ $(document).ready(() => {
     
     // h2 태그 이전부터 p 태그 이후까지의 모든 형제 요소에 스타일 적용
     $('.wrap1>h2').prevUntil('p').css('border', 'dotted');
+
+
+    // 요소가 있는지 찾는 메소드
+    console.log(`$('.wrap1>span').nextAll().is('h4') : ${$('.wrap1>span').nextAll().is('h4')}`);
+    console.log(`$('.wrap1>span').is('.class1') : ${$('.wrap1>span').is('.class1')}`);
+
+
+
+
+
+
+
 });
