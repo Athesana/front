@@ -241,6 +241,41 @@ $(document).ready(() => {
     arr.forEach(function(item, index, originarr) {
         // console.log(arguments);
         console.log(item, index, originarr);
-    })
+    });
+
+
+    // 2) extend 메소드
+    let user1 = {
+        name: '이산아',
+        age: 21
+    };
+
+    console.log(user1);
+    
+    $.extend(user1, {job: '학생'});
+    
+    console.log(user1);
+    
+    let user2 = {
+        name: '홍길동',
+        hobby: ['음악듣기', '달리기', '국밥먹기'],
+    };
+
+    let result = $.extend(user1, user2);
+    // 특정 값을 반환하는데 실제 합쳐진 객체를 반환해준다.
+
+    console.log(user1);
+    console.log(user2);
+    console.log(result);  // user1 리턴값과 같다.
+
+    // 동일한 속성 값이 있으면 나중에 전달한 값으로 덮어 씌워진다.
+    // {name: '홍길동', age: 21, job: '학생', hobby: Array(3)}
+
+
+    // 3. noConflict 메소드
+    // $('#ncTest').css('color', 'red');
+    let jq = $.noConflict();
+
+    jq('#ncTest').css('color', 'orange');
 
 });
