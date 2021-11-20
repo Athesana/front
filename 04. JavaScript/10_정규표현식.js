@@ -11,8 +11,10 @@ btn1.addEventListener('click', () => {
     let str = 'javascript jqueryscript ajax';
     let str2 = 'java jquery ajax';
 
-    console.log(regExp, typeof(regExp));
-    console.log(regExp2, typeof(regExp2));
+    console.log(regExp, typeof(regExp)); // /script/'object' 객체이다.
+    console.dir(regExp, typeof(regExp));
+    console.log(regExp2, typeof(regExp2)); // /script/'object' 객체이다.
+    console.dir(regExp2, typeof(regExp2));
 
     /*
         RegExp 객체에서 제공하는 메소드
@@ -36,7 +38,7 @@ btn1.addEventListener('click', () => {
     
     // 매개값으로 들어오는 문자열에 내가 지정한 패턴 값이 만족하는 값이 있으면 첫번째 만족하는 값을 리턴, 없으면 null
     area.innerHTML += `regExp.exec(str) : ${regExp.exec(str)} <br>`;  // script  
-    area.innerHTML += `regExp.test(str2) : ${regExp.exec(str2)} <br>`; // null
+    area.innerHTML += `regExp.exec(str2) : ${regExp.exec(str2)} <br>`; // null
 
     // <String 객체에서 정규 표현식 객체를 이용하는 메소드>
 
@@ -64,6 +66,7 @@ btn2.addEventListener('click', () => {
     area.innerHTML = '<h3>플래그 문자</h3>';
 
     // '$&'는 패턴을 만족하는 문자열을 가리킨다.
+    // 패턴으로 지정한 소문자 a를 찾을거고 = $& 그의 앞 뒤로 () 를 씌워서 총 '($&)' 의 형태로 replace 시켜보자.
     area.innerHTML += `/a/ : ${str.replace(regExp, '($&)')} <br>`
     area.innerHTML += `/a/i : ${str.replace(regExp1, '($&)')} <br>`
     area.innerHTML += `/a/g : ${str.replace(regExp2, '($&)')} <br>`
