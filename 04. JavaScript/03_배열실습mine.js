@@ -23,6 +23,31 @@ function test1(){
     }
 };
 
+/*
+1번 답안
+    <button onclick="arrayTest1();"> 전송 및 처리 </button>
+
+    <script>
+        function arrayTest1() {
+            var la1 = document.getElementById('la1').innerHTML.split(',');
+            var la2 = document.getElementById('la2').innerHTML.split(',');
+            var la3 = document.getElementById('la3').innerHTML.split(',');
+            var la4 = document.getElementById('la4').innerHTML.split(',');
+
+            var arr = la1.concat(la2, la3, la4);
+
+            var text = document.getElementById('text').value;
+            var index = arr.indexOf(text);
+
+            if(index >= 0) {
+                alert(`${text}는 배열 index ${index}번째에 존재합니다.`);
+            } else {
+                alert('존재하지 않습니다.');
+            }
+        }
+    </script>
+*/
+
 // 2번
 function test2(){
     let stringla1 = document.getElementById('stringla1').textContent;
@@ -59,6 +84,29 @@ function test2(){
 
 };
 
+
+/*
+2번 답안
+    <button onclick="reverseTest();">처리</button>
+    
+    <script>
+        function reverseTest(){
+                var stringla1 = document.getElementById("stringla1").innerHTML.split(' ');
+                var stringla2 = document.getElementById("stringla2").innerHTML.split(' ');
+        
+                var data1 = stringla1.reverse();
+                var data2 = stringla2.reverse();
+        
+                var arr = data1.concat(data2);
+                var str = arr.join('');
+                
+                document.getElementById("print").innerHTML = str;
+        }
+    </script> 
+
+*/
+
+
 // 3번
 let strInputList = new Array();
 
@@ -78,6 +126,33 @@ function test3(){
     p2.innerHTML = `출력 : "${strInputList.sort().reverse()}"`;
 
 };
+
+/*
+3번 답안
+<button onclick="print()">출력</button>
+
+    <script>
+        var data = [];
+
+        function input() {
+            var strInput = document.getElementById("strInput");
+
+            data.push(strInput.value);
+
+            strInput.value = '';
+        }
+
+        function print() {
+            var str = '';
+            var print2 = document.getElementById("print2");
+
+            data.sort().reverse();
+
+            str = data.join(', ');
+            print2.innerHTML = str;
+        }
+    </script>
+*/
 
 
 // 4번
@@ -107,3 +182,27 @@ function test4(){
     p3.innerHTML = `결과-> ${la4List.join(' ')}`;
     // document.getElementById('p3').innerHTML = la4List.join(' ');
 };
+
+/*
+4번 답안
+<script>
+    function arrayTest3() {
+        var str = document.getElementById("stringla4").innerHTML;
+        var arr = str.split(' ');
+        var remove = document.getElementById("remove").value;
+        var add = document.getElementById("add").value;
+
+        for (var i = 0; i < arr.length; i++) {
+            if(arr[i] === remove) {
+                arr.splice(i, 1);
+
+                break;
+            }
+        }
+
+        arr.push(add);
+
+        document.getElementById("print4").innerHTML = arr.join(' ');
+    }
+</script>
+*/
