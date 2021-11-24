@@ -4,6 +4,7 @@ $(document).ready(() => {
     //  1) html() 메소드
 
     // content 영역의 태그와 텍스트를 모두 가져온다.
+    // 선택된 요소 내부에 있는 자식 요소들을 태그와 텍스트 모두 가져온다.
     console.log(`$('#content1').html() : ${$('#content1').html()}`);  // $('#content1').html() : <a>네이버로</a>
     
     $('#content2').html($('#content1').html());
@@ -13,14 +14,16 @@ $(document).ready(() => {
     console.log(`$('.content').html() : ${$('.content').html()}`);
 
     /*
+    변경하는 방법
     console에서
+    - $('.content').html()); 찍으면 가장 첫 번째 "html() 테스트 1" 을 찍어준다.
     - $('.content').html('zzzz'); 하면 3개 다 바뀌고
     - $('.content:first').html('신기하다'); : 첫 번째만 바뀌고
     - $('.content:eq(1)').html('바뀌네?'); : 가운데만 바뀌고
     - $('.content:last').html('히히'); : 마지막 것만 바뀐다.
     */
 
-
+    // 전체 읽어 오고 싶으면 안에 콜백 함수를 지정해준다.
     $('.content').html((index, content) => {
 
         console.log(index, content)
@@ -32,17 +35,21 @@ $(document).ready(() => {
     // $('.content').html('zzzzzz'); 
 
     //  2) text() 메소드
-    // content 영역의 태그는 무시하고 텍스트만 가져온다.
+    // content 영역의 태그는 무시하고(제외하고) 텍스트만(문자열 정보만) 가져온다.
     console.log(`$('#content3').text() : ${$('#content3').text()}`); // $('#content3').text() : 네이버로
 
     $('#content4').html($('#content3').text());
 
+    // html() 메소드 테스트때와 달리 <a></a> 앵커 태그로 감싸져있지 않고 태그 사이에 그냥 텍스트로 '네이버로' 만 들어가 있다.
+
     /* 
     console에서
-    - $('#content4').text('<b>안녕</b>');
+    - $('#content4').text('<b>안녕</b>'); 실행시켜보면
+        웹페이지에는 굵은 글씨로 <b>안녕</b>이 그대로 태그까지 다 보인다. why? 변경할 문구에 html태그가 있어도 문자열로 인식해서 출력하니까
     */
 
     console.log(`$('.content2).text() : ${$('.content2').text()}`);
+    // 콘솔에는 text() 테스트 1text()테스트 2text() 테스트 3 이 출력된다. (리턴 시 전체 요소 텍스트 노드 출력)
 
     $('.content2').text((index, content) => {
         

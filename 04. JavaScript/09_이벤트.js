@@ -74,7 +74,8 @@ btn4.onclick = (event) => {
     // console.log(this);
 };
 
-// 1,2 는 콘솔에서 window 객체로 나온다. 3 객체 내부에 있는 메소드가 아니기 때문에, 애로우 펑션이 정의하고 있는 전체로써 window가 나온다.
+// 1,2 는 콘솔에서 <button id="btn4">고전 이벤트 방식</button>로 나온다. 
+// 3 객체 내부에 있는 메소드가 아니기 때문에, 애로우 펑션이 정의하고 있는 전체로써 window가 나온다.
 
 // 2) 인라인 방식
 function test2(event){
