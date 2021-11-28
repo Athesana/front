@@ -28,7 +28,7 @@ $(document).ready(() => {
 
         // if (content.css('display') === 'none'){
         //     content.slideDown(500, 'swing');
-            
+        
         // } else {
         //     content.slideUp(500, 'swing');
         // }
@@ -37,6 +37,8 @@ $(document).ready(() => {
         // $(event.target).next().slideToggle(1000, 'swing');
 
         // 하나의 컨텐츠만 slidedown 되도록 만들어보자.
+        // 클릭하면 일단 열려있는 contents들은 다 닫고,
+        // 내가 클릭한 event.target이 되는 메뉴의 다음에 있는 것 = 즉 contents가 열린다.
         $('.contents').slideUp(500, 'swing');
         $(event.target).next().slideDown(500, 'swing');
 
