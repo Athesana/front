@@ -77,19 +77,17 @@ $(document).ready(() => {
     // jQuery로 요소를 생성하는 방법 2  (태그로 감싼 문자열 형태로 만들어서 넘겨보자.)
     let p4 = $('<p>jQuery로 요소를 생성 2</p>')
 
-
-
     /*
-    console에
+    <console 결과>
     - $('p') : jQuery.fn.init(4) [p, p, p, p, prevObject: jQuery.fn.init(1)]
     - $('<p>') : jQuery.fn.init [p]
     - $('<p>').text('jQuery로 요소를 생성') : jQuery.fn.init(1)
     */
 
-    console.dir(p1);
-    console.dir(p2);
-    console.dir(p3);
-    console.dir(p4);
+    console.dir(p1);  // 단순한 문자열
+    console.dir(p2);  // DOM 객체
+    console.dir(p3);  // jQuery 객체
+    console.dir(p4);  
 
     $('#area1').append(p1, p2, p3, p4);
 
@@ -126,21 +124,21 @@ $(document).ready(() => {
     // 3. 요소 복제 메소드
     // 복제할 요소에 이벤트를 추가해보자.
     $('#item1').hover(
-    //     () => {
-    //         // 선택된 요소에 클래스 속성값을 추가하는 메소드
-    //         $('#item1').addClass('bg-red');
-    //     }, 
-    //     () => {
-    //         // 선택된 요소에 클래스 속성값을 제거하는 메소드
-    //         $('#item1').removeClass('bg-red');
-    //     });
-
-        (event) => {
-            console.log(event);
-
-            // 선택된 요소에 클래스 속성 값이 있으면 추가 없으면 제거하는 메소드 
-            $(event.target).toggleClass('bg-red');
+        () => {
+            // 선택된 요소에 클래스 속성값을 추가하는 메소드
+            $('#item1').addClass('bg-red');
+        }, 
+        () => {
+            // 선택된 요소에 클래스 속성값을 제거하는 메소드
+            $('#item1').removeClass('bg-red');
         }
+
+        // (event) => {
+        //     console.log(event);
+
+        //     // 선택된 요소에 클래스 속성 값이 없으면 추가, 있으면 제거하는 메소드 
+        //     $(event.target).toggleClass('bg-red');
+        // }
 
         /*
         하나의 콜백 함수만 주면 하나의 콜백 함수에서 
@@ -173,7 +171,7 @@ $(document).ready(() => {
             // $('#item1')의 요소의 위치가 이동된다.
         // $('#clone-result').append($('#item1'));
 
-        });
+    });
 
 
     // 4. 요소 제거 메소드
@@ -183,7 +181,7 @@ $(document).ready(() => {
     });
 
     // empty 테스트
-    // 요소.empty() : 선택된 요소의 자식 요소들을 제거한다.
+    // 요소.empty() : 요소 = jQuery 객체, 선택된 요소의 자식 요소들을(여기에서는 span) 제거한다.
 
     $('#empty').click(() => {
         $('#item2').empty();
@@ -227,6 +225,10 @@ $(document).ready(() => {
     //     output += `<h4><a href=${item.link}>${item.name}</a></h4>`;
     // });
 
+    // $('#each-test').append(output);
+
+    // arr 객체(배열)을 0부터 자동으로 불러와서 순번과 값을 각각 index와 item에 넣겠다.
+
 
     $(arr).each((index, item) => {
         console.log(`index: ${index}, item.name: ${item.name}, item.link: ${item.link}`);
@@ -259,6 +261,8 @@ $(document).ready(() => {
 
     console.log(user1);
     
+    // 추가하고 싶은 값이 있으면 전달하면 된다. 전달하는 값이 객체니까 두 개의 객체가 합쳐지게 된 꼴
+
     $.extend(user1, {job: '학생'});
     
     console.log(user1);
@@ -275,8 +279,12 @@ $(document).ready(() => {
     console.log(user2);
     console.log(result);  // user1 리턴값과 같다.
 
-    // 동일한 속성 값이 있으면 나중에 전달한 값으로 덮어 씌워진다.
+    // conlose에서 user1을 보면,
+    // "동일한 속성 값이 있으면, 반복되는 속성이 있으면" 나중에 전달한 값으로 덮어 씌워진다.
     // {name: '홍길동', age: 21, job: '학생', hobby: Array(3)}
+
+    // console에서 user2를 보면,
+    // 변하지 않았다.
 
 
     // 3. noConflict 메소드
@@ -285,4 +293,6 @@ $(document).ready(() => {
 
     jq('#ncTest').css('color', 'orange');
 
+    // 이 jq는 지역변수이기 때문에 가장 바깥에 있는 ready() 콜백 함수가 종료되면 소멸된다.
+    // 계속 사용하고 싶으면 이 함수 바깥에 선언하시오.
 });

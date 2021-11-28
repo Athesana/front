@@ -5,24 +5,12 @@ $(() => {
 
     // 방법 1번
     // $('#area1').on('mouseenter', () => {
-    //     $('#area1').css('background', 'red').text('마우스가 올라감');
+    //     $('#area1').css('background', 'red').text('메리');
     // });
 
     // $('#area1').on('mouseleave', () => {
-    //     $(window.event.target).css('background', 'seagreen').text('마우스가 내려감');
+    //     $(window.event.target).css('background', 'seagreen').text('크리스마스');
     // });
-
-    // 방법 2번
-    $('#area1').on('mouseenter mouseleave', (event) => {
-        console.log(event);
-
-        if (event.type === 'mouseenter') {
-            $('#area1').css('background', 'red').text('마우스가 올라감');
-            
-        } else if (event.type === 'mouseleave'){
-            $(window.event.target).css('background', 'seagreen').text('마우스가 내려감');
-        }
-    });
 
     /*
     console에서는
@@ -30,6 +18,21 @@ $(() => {
     jQuery.Event {originalEvent: MouseEvent, type: 'mouseleave', target: div#area1.area, currentTarget: div#area1.area, isDefaultPrevented: ƒ, …}
     가 나오기 때문에 type을 가지고 if문 을 만들수도 있다.
     */
+
+    // 방법 2번
+    $('#area1').on('mouseenter mouseleave', (event) => {
+        console.log(event);
+
+        if (event.type === 'mouseenter') {
+            $('#area1').css('background', 'red').text('메리');
+            
+        } else if (event.type === 'mouseleave'){
+            $(window.event.target).css('background', 'seagreen').text('크리스마스');
+        }
+    });
+
+
+    // 클릭하면 이벤트 없애보자!!
 
     $('#area1').on('click', (event) => {
         $(event.target)
@@ -43,10 +46,10 @@ $(() => {
     // 방법 3번
     $('#area1').on({
         mouseenter: () => {
-            $('#area1').css('background', 'red').text('마우스가 올라감');
+            $('#area1').css('background', 'red').text('메리');
         },
         mouseleave: () => {
-            $(window.event.target).css('background', 'seagreen').text('마우스가 내려감');
+            $(window.event.target).css('background', 'seagreen').text('크리스마스');
         },
         click: (event) => {
             $(event.target)
@@ -56,10 +59,16 @@ $(() => {
         }
     });
 
+
+
+
     // 2) one()
     $('#area2').one('click', () => {
         alert('처음이자 마지막으로 이벤트 핸들러 실행');
     }).css('cursor', 'pointer');
+
+
+
 
 
     // 2. 키보드 이벤트
@@ -84,7 +93,7 @@ $(() => {
 
     // 2) 동적으로 글자 수 세기
     $('#tarea2').on('keyup', (event) => {
-        let target = $(event.target);
+        let target = $(event.target);  // keyup이 되고 있는 객체 자체(text area영역)
         let counter = $('#counter');
         let maxLength = parseInt($('#maxLength').text());
 
@@ -116,18 +125,6 @@ $(() => {
             $('#idCheck').css({'color': 'red', 'font-weight': 'bold'}).text('사용할 수 없는 아이디 형식입니다.');
         }
     });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
