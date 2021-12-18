@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+    <link rel="stylesheet" href="./css/listcss.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="board_wrap">
+        <div class="board_title">
+            <h1><b>큐티 게시판</b></h1>
+            <p>큐티님을 위한 공간입니다.</p>
+        </div>
+        <div class="board_write_wrap">
+            <div class="board_write">
+                <div class="title">
+                    <dl>
+                        <dt>제목</dt>
+                        <dd><input type="text" placeholder="제목 입력" value="글 제목이 들어가야 합니다." required></dd>
+                    </dl>
+                </div>
+                <div class="info">
+                    <dl>
+                        <dt>작성자</dt>
+                        <dd><input type="text" placeholder="작성자 입력" value="이산아" required></dd>
+                    </dl>
+                
+                    <dl>
+                        <dt>비밀번호</dt>
+                        <dd><input type="password" placeholder="비밀번호 입력" value="1234" required></dd>
+                    </dl>
+                    <div class="file">
+                        <dl>
+                            <dt>첨부파일</dt>
+                            <dd><input type="file"></dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="content">
+                    <textarea placeholder="내용을 입력해주세요.">
+작성한 내용이 보여집니다.
+작성한 내용이 보여집니다.
+작성한 내용이 보여집니다.
+작성한 내용이 보여집니다.
+                    </textarea>
+                </div>
+
+            </div>
+            <div class="btn_wrap_nv">
+                <button type="button">수정</button>
+                <button type="button" class="on">취소</button>
+                <!-- <a href="view.html" class="on">수정</a> -->
+                <!-- <a href="view.html">취소</a> -->
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

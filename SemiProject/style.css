@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+caption{
+    display: none;
+}
+
+.board_list_wrap{
+    padding: 30px;
+}
+
+.board_list{
+    width: 100%;
+    border-top:2px solid #8d8d8d;;
+}
+
+.board_list th, .board_list td{
+    padding: 8px
+}
+
+.board_list td{
+    text-align: center;
+}
+
+.board_list tr{
+    border-bottom:1px solid #ccc;
+}
+
+.board_list tbody tr td:nth-child(3){
+    text-align: left;
+    
+}
+
+a{
+    text-decoration:none;
+    color:#09f;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.board_list_wrap .paging{
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+}
+
+.board_list_wrap .paging a{
+    color: inherit;
+    margin-left: 10px;
+    padding: 5px 10px;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 25px;
+    border:1px solid black;
+}
+
+.board_list_wrap .paging a:first-child{
+    margin-left: 0px;
+}
+
+.board_list_wrap .paging a.num_btn{
+    border: 1px solid #eee;
+    background: #f5f5f5;
+}
+
+.board_list_wrap .paging a.num{
+    border:1px solid #FDE37B;
+    font-weight: 600;
+    
+}
+
+.board_list_wrap .paging a.num.on{
+    color: white;
+    background: #FDE37B;
+}
