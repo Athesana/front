@@ -401,3 +401,19 @@ select{
     width: 150px;
     height: 30px;
 }
+
+#tbl-comment{
+    /* border: 1px solid black; */
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#tbl-comment .btn-comment{
+    float: right;
+}
+
+#tbl-comment #comment-content{
+    padding-bottom: 7px;
+    border-bottom: 1px dashed #777;
+}
