@@ -1,0 +1,35 @@
+게시판
+
+mian>java>com>qtqt>mvc>board>controller
+- BoardComDeleteServlet.java
+- BoardComEditServlet.java
+- BoardCommentServlet.java
+- BoardDeleteServlet.java
+- BoardEditServlet.java
+- BoardFileDownServlet.ajva
+- BoardViewServelt.java
+- BoardWriteServlet.java
+- CommunityServlet.java
+
+
+mian>java>com>qtqt>mvc>board>model>dao
+- BoardDao.java
+
+
+mian>java>com>qtqt>mvc>board>model>service
+- BoardService.java
+
+
+mian>java>com>qtqt>mvc>board>model>vo
+- Board.java
+- Reply.java
+
+
+
+
+main>wepapp>view>board
+- boardedit.jsp
+- boardview.jsp
+- boardwrite.jsp
+- comunity.jsp
+
